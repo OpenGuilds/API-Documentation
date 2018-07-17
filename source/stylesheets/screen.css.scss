@@ -1,5 +1,6 @@
 @charset "utf-8";
 @import 'normalize';
+@import 'openguilds_variables';
 @import 'variables';
 @import 'icon-font';
 // @import 'rtl'; // uncomment to switch to RTL format
@@ -59,8 +60,9 @@ html, body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
-  font-size: 13px;
+  font-size: $base-font-size;
   font-weight: bold;
+  border-right: 1px solid $primary-color;
 
   // language selector for mobile devices
   .lang-selector {
@@ -74,7 +76,8 @@ html, body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
+    max-width: 72px;
+    margin: ($base-spacing * 2) auto;
     margin-bottom: $logo-margin;
   }
 
@@ -171,7 +174,7 @@ html, body {
 
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
-    font-size: 12px;
+    font-size: $base-font-size;
   }
 
   .toc-footer {
@@ -346,7 +349,7 @@ html, body {
 
   h1 {
     @extend %header-font;
-    font-size: 25px;
+    font-size: $base-font-size * 1.6;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     margin-bottom: $h1-margin-bottom;
@@ -363,7 +366,7 @@ html, body {
 
   h2 {
     @extend %header-font;
-    font-size: 19px;
+    font-size: $base-font-size * 1.3;
     margin-top: 4em;
     margin-bottom: 0;
     border-top: 1px solid #ccc;
@@ -381,7 +384,7 @@ html, body {
 
   h3, h4, h5, h6 {
     @extend %header-font;
-    font-size: 15px;
+    font-size: $base-font-size * 1.15;
     margin-top: 2.5em;
     margin-bottom: 0.8em;
   }
@@ -467,6 +470,7 @@ html, body {
     margin-top: 1.5em;
     margin-bottom: 1.5em;
     background: $aside-notice-bg;
+    color: white;
     line-height: 1.6;
 
     &.warning {
@@ -612,4 +616,12 @@ html, body {
 
 .highlight, .highlight .w {
   background-color: $code-bg;
+}
+
+ul.active, ul.search-results {
+  li {
+    a, a.toc-link {
+      color: white !important;
+    }
+  }
 }
