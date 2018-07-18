@@ -237,6 +237,9 @@
                     <a href="#the-batch-object" class="toc-h2 toc-link" data-title="The Batch Object">The Batch Object</a>
                   </li>
                   <li>
+                    <a href="#create-a-batch" class="toc-h2 toc-link" data-title="Create a Batch">Create a Batch</a>
+                  </li>
+                  <li>
                     <a href="#get-all-batches" class="toc-h2 toc-link" data-title="Get All Batches">Get All Batches</a>
                   </li>
                   <li>
@@ -244,6 +247,9 @@
                   </li>
                   <li>
                     <a href="#cancel-a-specific-batch" class="toc-h2 toc-link" data-title="Cancel a Specific Batch">Cancel a Specific Batch</a>
+                  </li>
+                  <li>
+                    <a href="#pay-for-a-batch" class="toc-h2 toc-link" data-title="Pay for a Batch">Pay for a Batch</a>
                   </li>
               </ul>
           </li>
@@ -307,15 +313,15 @@ You must replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your per
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The resource requested is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified resource could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a resource with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -323,15 +329,11 @@ You must replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your per
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
+<td>Gone -- The resource requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many resources! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -351,6 +353,67 @@ which pieces of data get completed by a guild at any given time.</p>
 <p>When you create a Batch, it is unpaid. Guilds will not work
 on Contracts which are unpaid to a price floor they set.</p>
 
+<blockquote>
+<p>The Batch object looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The object has the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td>The object being described by the incoming data, in this case a Batch.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the batch being returned</td>
+</tr>
+<tr>
+<td>fraction_completed</td>
+<td>The number of data completed out of the total number in the batch.</td>
+</tr>
+<tr>
+<td>completed</td>
+<td>Returns true if the batch data is all completed, otherwise false.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>A status describing the current state of the batch.</td>
+</tr>
+</tbody></table>
+
+<p>The status of a batch object can be one of the following:</p>
+
+<table><thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Processing</td>
+<td>Not all data in the batch has been completed.</td>
+</tr>
+<tr>
+<td>Completed</td>
+<td>All data in the batch has been processed and marked as complete.</td>
+</tr>
+</tbody></table>
+<h2 id='create-a-batch'>Create a Batch</h2>
 <p>A Batch must be created for a specific Guild.</p>
 
 <p>Once created the Batch is set to unpaid.</p>
@@ -358,16 +421,34 @@ on Contracts which are unpaid to a price floor they set.</p>
 <p>You can pay for a Batch by creating a payment for it.</p>
 
 <p>When a Batch has been paid for it is sent to the Guild&#39;s queue to be processed.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
 
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">batches</span><span class="p">.</span><span class="nf">get</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/batch"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+  -d <span class="s2">"@data.json"</span>
+</code></pre>
 <blockquote>
-<p>The Batch object looks like this:</p>
+<p>Your data.json file should look like:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"batch"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image1.png"</span><span class="w"> </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image2.png"</span><span class="w"> </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Which should return your batch:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0/2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unpaid"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -384,7 +465,7 @@ on Contracts which are unpaid to a price floor they set.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"batches"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/batches"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -398,9 +479,7 @@ on Contracts which are unpaid to a price floor they set.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all batches.</p>
-<h3 id='http-request'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
 <p><code>GET http://example.com/api/batches</code></p>
 <h2 id='get-a-specific-batch'>Get a Specific Batch</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
 
@@ -413,7 +492,7 @@ on Contracts which are unpaid to a price floor they set.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"batch"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/10"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
@@ -428,9 +507,7 @@ on Contracts which are unpaid to a price floor they set.</p>
   </span><span class="p">]</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="err">...data...</span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific batch.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://example.com/batches/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -447,6 +524,8 @@ on Contracts which are unpaid to a price floor they set.</p>
 <h2 id='cancel-a-specific-batch'>Cancel a Specific Batch</h2>
 <p>Canceling a batch is made with a delete request. We delete the contents of the
 batch but keep a record of it being canceled.</p>
+
+<p>Refunds will be given for data that have not yet been contracted by workers.</p>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
@@ -463,9 +542,7 @@ batch but keep a record of it being canceled.</p>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
   </span><span class="s2">"canceled"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint cancels a specific batch.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>DELETE https://openguilds.com/batches/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -479,7 +556,49 @@ batch but keep a record of it being canceled.</p>
 <td>The ID of the batch to cancel</td>
 </tr>
 </tbody></table>
+<h2 id='pay-for-a-batch'>Pay for a Batch</h2>
+<p>You can pay for a batch by creating a Payment.
+The payment will take your credits and bind them to a contract for a worker.
+The worker is given the credit upon the completion criteria of the contract
+being met.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
 
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">batches</span><span class="p">.</span><span class="nf">pay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/batches/1/payments"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"$2.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"receipt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LineItem"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$1.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w"> 
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LineItem"</span><span class="p">,</span><span class="w"> 
+      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$1.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
