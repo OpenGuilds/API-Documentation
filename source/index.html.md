@@ -12,6 +12,8 @@ toc_footers:
 includes:
   - errors
   - batches
+  - data
+  - chains
 
 search: true
 ---
@@ -24,13 +26,6 @@ Responses are given in JSON format, which return both errors and data requested.
 
 # Authentication
 
-Authentication is done using an API secret key in a given request. Manage API keys from your dashboard. API keys allow access to all functions of your account and should be kept secret. Do not put keys on publicly accessable Github repositories or in client-side code.
-
-Authentication is performed via HTTP Basic Auth. Provide your API key as the basic auth username value. You do not need to provide a password.
-
-OpenGuilds expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-All API requests will be made of HTTPS. Calls over plain HTTP will fail. API requests without authentication will also fail.
 
 > Authorize to using your API Key:
 
@@ -49,6 +44,14 @@ curl "api_endpoint_here"
 > Make sure to replace `8641fb38-294a-41d9-9591-3449dfd99910` with your API key.
 
 OpenGuilds uses API keys to allow access to the API. You can register a new OpenGuilds API key at our [developer portal](http://example.com/developers).
+
+Authentication is done using an API secret key in a given request. Manage API keys from your dashboard. API keys allow access to all functions of your account and should be kept secret. Do not put keys on publicly accessable Github repositories or in client-side code.
+
+Authentication is performed via HTTP Basic Auth. Provide your API key as the basic auth username value. You do not need to provide a password.
+
+OpenGuilds expects for the API key to be included in all API requests to the server in a header that looks like the following:
+
+All API requests will be made of HTTPS. Calls over plain HTTP will fail. API requests without authentication will also fail.
 
 <aside class="notice">
 You must replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your personal API key.
