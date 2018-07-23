@@ -14,6 +14,8 @@ includes:
   - batches
   - data
   - chains
+  - interfaces
+  - wallets
 
 search: true
 ---
