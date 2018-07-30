@@ -235,7 +235,7 @@ api.batches.pay(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/batches/<ID>/payments"
+curl "https://openguilds.com/api/batches/<ID>/debits"
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -243,42 +243,25 @@ curl "https://openguilds.com/api/batches/<ID>/payments"
 
 ```json
 {
-  "object": "Payment",
+  "object": "Transaction",
   "id": 2,
+  "type": "Debit",
   "amount" : "$2.00",
   "source": {
     "object": "Batch",
     "id": "1"
-  },
-  "receipt": [
-    {
-      "object": "LineItem", 
-      "cost": "$1.00",
-      "source": {
-          "object": "Datum",
-          "id": "1"
-      }
-    },
-    { 
-      "object": "LineItem", 
-      "cost": "$1.00",
-      "source": {
-          "object": "Datum",
-          "id": "2"
-      }
-    },
-  ]
+  }
 }
 ```
 
-You can pay for a batch by creating a Payment.
-The payment will take your credits and bind them to a contract for a worker.
-The worker is given the credit upon the completion criteria of the contract
+You can pay for a batch by creating a Debit Transaction.
+The payment will take your Credits and bind them to a contract for a Worker.
+The Worker is given the Credit upon the completion criteria of the Contract
 being met.
 
 ### HTTP Request
 
-`POST http://openguilds.com/api/batches/<ID>/payments`
+`POST http://openguilds.com/api/batches/<ID>/debits`
 
 ### URL Parameters
 
