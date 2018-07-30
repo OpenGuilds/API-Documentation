@@ -281,6 +281,34 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#worker-interfaces" class="toc-h1 toc-link" data-title="Worker Interfaces">Worker Interfaces</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#acceptable-interfaces" class="toc-h2 toc-link" data-title="Acceptable Interfaces">Acceptable Interfaces</a>
+                  </li>
+                  <li>
+                    <a href="#creating-an-interface" class="toc-h2 toc-link" data-title="Creating an Interface">Creating an Interface</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#wallet" class="toc-h1 toc-link" data-title="Wallet">Wallet</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-wallet-object" class="toc-h2 toc-link" data-title="The Wallet Object">The Wallet Object</a>
+                  </li>
+                  <li>
+                    <a href="#the-transaction-object" class="toc-h2 toc-link" data-title="The Transaction Object">The Transaction Object</a>
+                  </li>
+                  <li>
+                    <a href="#show-your-wallet" class="toc-h2 toc-link" data-title="Show your Wallet">Show your Wallet</a>
+                  </li>
+                  <li>
+                    <a href="#purchase-credits" class="toc-h2 toc-link" data-title="Purchase Credits">Purchase Credits</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='#'>Sign Up for a Developer Key</a></li>
@@ -604,46 +632,29 @@ batch but keep a record of it being canceled.</p>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">batches</span><span class="p">.</span><span class="nf">pay</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/batches/&lt;ID&gt;/payments"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/batches/&lt;ID&gt;/debits"</span>
   -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debit"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"$2.00"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"receipt"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LineItem"</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$1.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> 
-      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LineItem"</span><span class="p">,</span><span class="w"> 
-      </span><span class="s2">"cost"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$1.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>You can pay for a batch by creating a Payment.
-The payment will take your credits and bind them to a contract for a worker.
-The worker is given the credit upon the completion criteria of the contract
+<p>You can pay for a batch by creating a Debit Transaction.
+The payment will take your Credits and bind them to a contract for a Worker.
+The Worker is given the Credit upon the completion criteria of the Contract
 being met.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>POST http://openguilds.com/api/batches/&lt;ID&gt;/payments</code></p>
+<p><code>POST http://openguilds.com/api/batches/&lt;ID&gt;/debits</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -959,6 +970,211 @@ evolved over time.</p>
 <tr>
 <td>ID</td>
 <td>The ID of the datum to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='worker-interfaces'>Worker Interfaces</h1><h2 id='acceptable-interfaces'>Acceptable Interfaces</h2>
+<p>Interfaces are any web server which follows some specific rules:</p>
+
+<ol>
+<li>It must pass through some URL parameters into its form as listed below.</li>
+<li>It must provide the user a submit button which returns information to OpenGuilds.</li>
+<li>It must use HTTPs protocol.</li>
+<li>It must be accessible to the Workers.</li>
+</ol>
+
+<p>The attributes it must pass are:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workerId</td>
+<td>The ID of the worker who is completing your Contract</td>
+</tr>
+<tr>
+<td>assignmentId</td>
+<td>The ID of the Contract the work is submitted to</td>
+</tr>
+<tr>
+<td>submitToUrl</td>
+<td>The URL that the form shoud be submitted to.</td>
+</tr>
+</tbody></table>
+
+<p>Make sure your form submits to the submitToUrl value with the assignmentId as a
+hidden field.</p>
+
+<aside class="warning">
+AJAX requests will not work. The user must submit the form directly by the user.
+</aside>
+<h2 id='creating-an-interface'>Creating an Interface</h2><h1 id='wallet'>Wallet</h1><h2 id='the-wallet-object'>The Wallet Object</h2>
+<blockquote>
+<p>The Wallet object looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$20.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Wallets are created when a user account is created.</p>
+
+<p>Wallets store a history of Transactions, which can be Credit, or Debit types.</p>
+
+<p>A Wallet has the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td>The object being described by the incoming data, in this case a Wallet.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the Wallet being returned.</td>
+</tr>
+<tr>
+<td>transactions</td>
+<td>A time ordered history of Transactions, with the newest first.</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>The total amount of Credits from adding all Credits minus Debits.</td>
+</tr>
+</tbody></table>
+<h2 id='the-transaction-object'>The Transaction Object</h2>
+<blockquote>
+<p>The Transaction object looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Transactions are created when paying for something, or purchasing Credits.</p>
+
+<p>A Transaction has the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td>The object being described by the incoming data, in this case a Wallet.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the Wallet being returned.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>The type of the transaction, can be either Credit or Debit.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>The amount either credited or debited from the account.</td>
+</tr>
+<tr>
+<td>source</td>
+<td>Details of the object which was purchased or paid for.</td>
+</tr>
+</tbody></table>
+<h2 id='show-your-wallet'>Show your Wallet</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">wallet</span><span class="p">.</span><span class="nf">get</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/wallet"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+</code></pre>
+<blockquote>
+<p>Which should return your Wallet:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$20.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/wallet/</code></p>
+<h2 id='purchase-credits'>Purchase Credits</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">wallet</span><span class="p">.</span><span class="nf">purchase</span><span class="p">(</span>
+  <span class="ss">email: </span><span class="s1">'customer@email.com'</span><span class="p">,</span>
+  <span class="ss">token: </span><span class="s1">'stripe-token-here'</span><span class="p">,</span>
+  <span class="ss">amount: </span><span class="mi">500</span>
+<span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/wallet"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+  -d <span class="nv">email</span><span class="o">=</span><span class="s2">"customer@email.com"</span>
+  -d <span class="nv">token</span><span class="o">=</span><span class="s2">"stripe-token-here"</span>
+  -d <span class="nv">amount</span><span class="o">=</span>500
+</code></pre>
+<blockquote>
+<p>Which should return your Wallet:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallet"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>Wallet Credits are purchased through Stripe&#39;s API.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST http://openguilds.com/api/wallet/credits</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>The email which will be used to create the Stripe Customer</td>
+</tr>
+<tr>
+<td>token</td>
+<td>The token provided by Stripe Checkout</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>The amount in cents the user would like to purchase</td>
 </tr>
 </tbody></table>
 
