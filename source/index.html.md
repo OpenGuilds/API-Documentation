@@ -11,6 +11,7 @@ toc_footers:
 
 includes:
   - errors
+  - guilds
   - batches
   - data
   - chains
