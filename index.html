@@ -484,10 +484,26 @@ on Contracts which are unpaid to a price floor they set.</p>
 <p>Your data.json file should look like:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image1.png"</span><span class="w"> </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image2.png"</span><span class="w"> </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"data_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="err">parameters_attributes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="err">key</span><span class="p">:</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">,</span><span class="w">
+            </span><span class="err">value</span><span class="p">:</span><span class="w">  </span><span class="s2">"www.images.com/image1.png"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="err">parameters_attributes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="err">key</span><span class="p">:</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">,</span><span class="w">
+            </span><span class="err">value</span><span class="p">:</span><span class="w">  </span><span class="s2">"www.images.com/image1.png"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
