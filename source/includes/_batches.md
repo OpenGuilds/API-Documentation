@@ -62,10 +62,26 @@ curl "https://openguilds.com/api/batch"
 
 ```json
 {
-  "data": [
-    { "image_url": "www.images.com/image1.png" },
-    { "image_url": "www.images.com/image2.png" }
-  ]
+  "batch": {
+    "data_attributes": [
+      {
+        parameters_attributes: [
+          {
+            key: "image_url",
+            value:  "www.images.com/image1.png"
+          },
+        ]
+      },
+      {
+        parameters_attributes: [
+          {
+            key: "image_url",
+            value:  "www.images.com/image1.png"
+          },
+        ]
+      }
+    ]
+  }
 }
 ```
 
