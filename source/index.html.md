@@ -14,8 +14,8 @@ includes:
   - guilds
   - members
   - tasks
+  - workspaces
   - batches
-  - interfaces
   - wallets
 
 search: true
