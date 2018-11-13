@@ -90,11 +90,11 @@ require 'open-guilds'
 
 api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
 guild = api.guilds.get(1)
-guild.get_member('email@example.com')
+guild.members.find('email@example.com')
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds/<GUILD_ID>/members/<ID>"
+curl "https://openguilds.com/api/guilds/<GUILD_ID>/members/find"
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -d email='email@example.com'
 ```
@@ -134,12 +134,13 @@ require 'open-guilds'
 
 api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
 guild = api.guilds.get(1)
-guild.invite_member('email@example.com')
+guild.members.invite('email@example.com')
 ```
 
 ```shell
 curl "https://openguilds.com/api/guilds/<GUILD_ID>/invites"
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
+  -d email="email@example.com"
 ```
 
 > The above command returns JSON structured like this:
@@ -173,7 +174,7 @@ require 'open-guilds'
 
 api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
 guild = api.guilds.get(1)
-member = guild.get_member('email@example.com')
+member = guild.members.find('email@example.com')
 member.remove
 ```
 

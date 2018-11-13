@@ -13,6 +13,7 @@ includes:
   - errors
   - guilds
   - members
+  - tasks
   - batches
   - interfaces
   - wallets
