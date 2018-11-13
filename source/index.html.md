@@ -13,8 +13,6 @@ includes:
   - errors
   - guilds
   - batches
-  - data
-  - chains
   - interfaces
   - wallets
 
