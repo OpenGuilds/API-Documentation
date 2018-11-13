@@ -15,10 +15,10 @@
 }
 ```
 
-Guilds are responsible for controlling the quality of their crowdsourcing
-processes.
+Guilds are online organizations with a community of Members.
 
-Guilds are made up of many Layers which process data with groupings of Tasks.
+Guilds are made up of many Tasks where Members process data by modifying it
+through Interfaces.
 
 The object has the following attributes:
 
@@ -28,7 +28,6 @@ object | The object being described by the incoming data, in this case a Guild.
 id | The ID of the batch being returned.
 name | The name of the Guild.
 description | A description of the Guild.
-price_floor | The minimum you must pay to process one datum through the Guild.
 
 ## Get a Guild
 ```ruby
@@ -39,7 +38,7 @@ api.guilds.get(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/data/<ID>"
+curl "https://openguilds.com/api/guilds/<ID>"
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -51,7 +50,6 @@ curl "https://openguilds.com/api/data/<ID>"
   "id": "1",
   "name": "Audio Transcription",
   "description": "This guild takes an audio file and returns a text transcription",
-  "price_floor": "1.80",
   "created": "2015-05-22T14:56:29.000Z",
   "updated": "2015-05-22T14:56:28.000Z"
 }
@@ -67,5 +65,3 @@ curl "https://openguilds.com/api/data/<ID>"
 Parameter | Description
 --------- | -----------
 ID | The ID of the guild to retrieve
-
-
