@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>OpenGuilds API Reference</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -242,6 +242,51 @@
               </ul>
           </li>
           <li>
+            <a href="#members" class="toc-h1 toc-link" data-title="Members">Members</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-member-object" class="toc-h2 toc-link" data-title="The Member Object">The Member Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-members" class="toc-h2 toc-link" data-title="Get all Members">Get all Members</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-member" class="toc-h2 toc-link" data-title="Get a Member">Get a Member</a>
+                  </li>
+                  <li>
+                    <a href="#invite-a-new-member" class="toc-h2 toc-link" data-title="Invite a new Member">Invite a new Member</a>
+                  </li>
+                  <li>
+                    <a href="#remove-a-member" class="toc-h2 toc-link" data-title="Remove a Member">Remove a Member</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tasks" class="toc-h1 toc-link" data-title="Tasks">Tasks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-task-object" class="toc-h2 toc-link" data-title="The Task Object">The Task Object</a>
+                  </li>
+                  <li>
+                    <a href="#get-all-tasks" class="toc-h2 toc-link" data-title="Get all Tasks">Get all Tasks</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-task" class="toc-h2 toc-link" data-title="Get a Task">Get a Task</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#workspaces" class="toc-h1 toc-link" data-title="Workspaces">Workspaces</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#the-workspace-object" class="toc-h2 toc-link" data-title="The Workspace Object">The Workspace Object</a>
+                  </li>
+                  <li>
+                    <a href="#acceptable-workspaces" class="toc-h2 toc-link" data-title="Acceptable Workspaces">Acceptable Workspaces</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#batches" class="toc-h1 toc-link" data-title="Batches">Batches</a>
               <ul class="toc-list-h2">
                   <li>
@@ -265,45 +310,6 @@
               </ul>
           </li>
           <li>
-            <a href="#data" class="toc-h1 toc-link" data-title="Data">Data</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#the-datum-object" class="toc-h2 toc-link" data-title="The Datum Object">The Datum Object</a>
-                  </li>
-                  <li>
-                    <a href="#add-a-datum-to-a-batch" class="toc-h2 toc-link" data-title="Add a Datum to a Batch">Add a Datum to a Batch</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-datum" class="toc-h2 toc-link" data-title="Get a Datum">Get a Datum</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-datum" class="toc-h2 toc-link" data-title="Delete a Datum">Delete a Datum</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#chains" class="toc-h1 toc-link" data-title="Chains">Chains</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#the-chain-object" class="toc-h2 toc-link" data-title="The Chain Object">The Chain Object</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-chain" class="toc-h2 toc-link" data-title="Get a Chain">Get a Chain</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#worker-interfaces" class="toc-h1 toc-link" data-title="Worker Interfaces">Worker Interfaces</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#acceptable-interfaces" class="toc-h2 toc-link" data-title="Acceptable Interfaces">Acceptable Interfaces</a>
-                  </li>
-                  <li>
-                    <a href="#creating-an-interface" class="toc-h2 toc-link" data-title="Creating an Interface">Creating an Interface</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#wallet" class="toc-h1 toc-link" data-title="Wallet">Wallet</a>
               <ul class="toc-list-h2">
                   <li>
@@ -313,16 +319,16 @@
                     <a href="#the-transaction-object" class="toc-h2 toc-link" data-title="The Transaction Object">The Transaction Object</a>
                   </li>
                   <li>
-                    <a href="#show-your-wallet" class="toc-h2 toc-link" data-title="Show your Wallet">Show your Wallet</a>
+                    <a href="#get-all-wallets" class="toc-h2 toc-link" data-title="Get all Wallets">Get all Wallets</a>
                   </li>
                   <li>
-                    <a href="#purchase-credits" class="toc-h2 toc-link" data-title="Purchase Credits">Purchase Credits</a>
+                    <a href="#get-a-wallet" class="toc-h2 toc-link" data-title="Get a Wallet">Get a Wallet</a>
                   </li>
               </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://dashboard.openguilds.com'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -330,7 +336,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the OpenGuilds API documentation! Our API is REST based. That means predictable resource-oriented URLs, which return HTTP response codes to indicate API errors.</p>
+<p>Welcome to the OpenGuilds API documentation! Our API is REST based. 
+That means predictable resource-oriented URLs, which return HTTP response codes 
+to indicate API errors.</p>
 
 <p>Responses are given in JSON format, which return both errors and data requested.</p>
 <h1 id='authentication'>Authentication</h1>
@@ -348,15 +356,23 @@ curl <span class="s2">"api_endpoint_here"</span>
 <p>Make sure to replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your API key.</p>
 </blockquote>
 
-<p>OpenGuilds uses API keys to allow access to the API. You can register a new OpenGuilds API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<p>OpenGuilds uses API keys to allow access to the API. 
+You can register a new OpenGuilds API key at our <a href="https://dashboard.openguilds.com/account">developer portal</a>.</p>
 
-<p>Authentication is done using an API secret key in a given request. Manage API keys from your dashboard. API keys allow access to all functions of your account and should be kept secret. Do not put keys on publicly accessable Github repositories or in client-side code.</p>
+<p>Authentication is done using an API secret key in a given request. 
+Manage API keys from your dashboard. API keys allow access to all functions of 
+your account and should be kept secret. Do not put keys on publicly accessable 
+Github repositories or in client-side code.</p>
 
-<p>Authentication is performed via HTTP Basic Auth. Provide your API key as the basic auth username value. You do not need to provide a password.</p>
+<p>Authentication is performed via HTTP Basic Auth. 
+Provide your API key as the basic auth username value. 
+You do not need to provide a password.</p>
 
-<p>OpenGuilds expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>All API requests will be made over HTTPS. Calls over plain HTTP will fail. 
+API requests without authentication will also fail.</p>
 
-<p>All API requests will be made of HTTPS. Calls over plain HTTP will fail. API requests without authentication will also fail.</p>
+<p>OpenGuilds expects for the API key to be included in all API requests to 
+the server in a header that looks like the following:</p>
 
 <aside class="notice">
 You must replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your personal API key.
@@ -425,10 +441,10 @@ You must replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your per
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Guilds are responsible for controlling the quality of their crowdsourcing
-processes.</p>
+<p>Guilds are online organizations with a community of <a href="#the-member-object">Members</a>.</p>
 
-<p>Guilds are made up of many Layers which process data with groupings of Tasks.</p>
+<p>Guilds are made up of many <a href="#the-task-object">Tasks</a> where <a href="#the-member-object">Members</a> process data by modifying it
+through <a href="#the-workspace-object">Workspaces</a>.</p>
 
 <p>The object has the following attributes:</p>
 
@@ -440,7 +456,7 @@ processes.</p>
 </thead><tbody>
 <tr>
 <td>object</td>
-<td>The object being described by the incoming data, in this case a Guild.</td>
+<td>The object being described by the incoming data, in this case a guild.</td>
 </tr>
 <tr>
 <td>id</td>
@@ -448,22 +464,18 @@ processes.</p>
 </tr>
 <tr>
 <td>name</td>
-<td>The name of the Guild.</td>
+<td>The name of the guild.</td>
 </tr>
 <tr>
 <td>description</td>
-<td>A description of the Guild.</td>
-</tr>
-<tr>
-<td>price_floor</td>
-<td>The minimum you must pay to process one datum through the Guild.</td>
+<td>A description of the guild.</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-guild'>Get a Guild</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
 <span class="n">api</span><span class="p">.</span><span class="nf">guilds</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/data/&lt;ID&gt;"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/guilds/&lt;ID&gt;"</span>
   -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
 </code></pre>
 <blockquote>
@@ -474,7 +486,6 @@ processes.</p>
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audio Transcription"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This guild takes an audio file and returns a text transcription"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"price_floor"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.80"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -493,6 +504,495 @@ processes.</p>
 <td>The ID of the guild to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='members'>Members</h1><h2 id='the-member-object'>The Member Object</h2>
+<blockquote>
+<p>The Member object looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quality_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.86"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"credit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"credit_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Members are individuals in a <a href="#the-guild-object">Guilds</a> community.
+Members can get qualifications, subscribe to <a href="#the-task-object">Tasks</a> 
+and perform work for a <a href="#the-guild-object">Guild</a>.</p>
+
+<p>Members are rewarded for their correct work with guild credits.
+Members can request a payout from a guild which is then authorized by the guild owner.</p>
+
+<p>Members are assigned a quality score which is measured by their answers given to
+specific questions according to a golden set of answers.</p>
+
+<p>The object has the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td>The object being described by the incoming data, in this case a Guild.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the batch being returned.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>The email of the Member.</td>
+</tr>
+<tr>
+<td>quality_score</td>
+<td>A score between 0.00 and 1.00 which determines the members test accuracy.</td>
+</tr>
+<tr>
+<td>credit</td>
+<td>The total available credit a user has to request a payout with expressed in humanized money form with currency symbol.</td>
+</tr>
+<tr>
+<td>credit_cents</td>
+<td>The total available credit a user has to request a payout expressed in the number of cents.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-members'>Get all Members</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">guild</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">guilds</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">guild</span><span class="p">.</span><span class="nf">members</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/guilds/&lt;GUILD_ID&gt;/members
+  -u "</span>8641fb38-294a-41d9-9591-3449dfd99910<span class="s2">"
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/guilds/1/members"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"quality_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.86"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"credit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"credit_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/guild/&lt;GUILD_ID&gt;/members</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GUILD_ID</td>
+<td>The ID of the guild you want to view the membership of</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-member'>Get a Member</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">guild</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">guilds</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">guild</span><span class="p">.</span><span class="nf">members</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'email@example.com'</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/guilds/&lt;GUILD_ID&gt;/members/find"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+  -d <span class="nv">email</span><span class="o">=</span><span class="s1">'email@example.com'</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"quality_score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.86"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"credit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"credit_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/guild/&lt;GUILD_ID&gt;/members/find</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GUILD_ID</td>
+<td>The ID of the guild the membership is for</td>
+</tr>
+<tr>
+<td>email</td>
+<td>The email of the member you wish to find</td>
+</tr>
+</tbody></table>
+<h2 id='invite-a-new-member'>Invite a new Member</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">guild</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">guilds</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">guild</span><span class="p">.</span><span class="nf">members</span><span class="p">.</span><span class="nf">invite</span><span class="p">(</span><span class="s1">'email@example.com'</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/guilds/&lt;GUILD_ID&gt;/invites"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+  -d <span class="nv">email</span><span class="o">=</span><span class="s2">"email@example.com"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invite"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"email@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sending"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/guild/&lt;GUILD_ID&gt;/invites</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GUILD_ID</td>
+<td>The ID of the guild the invite is for</td>
+</tr>
+</tbody></table>
+<h2 id='remove-a-member'>Remove a Member</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">guild</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">guilds</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">member</span> <span class="o">=</span> <span class="n">guild</span><span class="p">.</span><span class="nf">members</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="s1">'email@example.com'</span><span class="p">)</span>
+<span class="n">member</span><span class="p">.</span><span class="nf">remove</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/guilds/&lt;GUILD_ID&gt;/members/&lt;ID&gt;"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+  -X DELETE
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Member"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/guild/&lt;GUILD_ID&gt;/members&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GUILD_ID</td>
+<td>The ID of the guild the invite is for</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the member you want to remove</td>
+</tr>
+</tbody></table>
+<h1 id='tasks'>Tasks</h1><h2 id='the-task-object'>The Task Object</h2>
+<blockquote>
+<p>The Task object looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimum_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimum_amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audio Transcription Interface"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api/workspaces/1"</span><span class="w">
+    </span><span class="s2">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://preview.interface.com"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"connections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Connection"</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Tasks are the atomic units of work a <a href="#the-guild-object">Guild</a> performs on incoming data.
+<a href="#the-member-object">Members</a> subscribe to tasks to receive work into their inboxes that they can
+claim.</p>
+
+<p>To subscribe to a Task, <a href="#the-member-object">Members</a> must have all the required qualifications.</p>
+
+<p><a href="#the-member-object">Members</a> perform work on data through a <a href="#the-workspace-object">Workspace</a>.</p>
+
+<p>Tasks are bound together through connections.</p>
+
+<p>The object has the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td>The object being described by the incoming data, in this case a Task</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the task being returned.</td>
+</tr>
+<tr>
+<td>minimum_amount</td>
+<td>The minimum cost of a datum being processed through this task.</td>
+</tr>
+<tr>
+<td>minimum_amount_cents</td>
+<td>The minimum cost of a datum being processed through this task in cents.</td>
+</tr>
+<tr>
+<td>workspace</td>
+<td>The connected workspace object for this task.</td>
+</tr>
+<tr>
+<td>connections</td>
+<td>A list of associated connection objects.</td>
+</tr>
+</tbody></table>
+
+<p>The Connection object has the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td>The object being described by the incoming data, in this case a Connection</td>
+</tr>
+<tr>
+<td>source</td>
+<td>The ID of the task used as the source of the data transfer.</td>
+</tr>
+<tr>
+<td>target</td>
+<td>The ID of the task used as the destination of the data transfer.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-tasks'>Get all Tasks</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">guild</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">guilds</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">guild</span><span class="p">.</span><span class="nf">tasks</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/guilds/&lt;GUILD_ID&gt;/tasks
+  -u "</span>8641fb38-294a-41d9-9591-3449dfd99910<span class="s2">"
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/guilds/1/tasks"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimum_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minimum_amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"connections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/guild/&lt;GUILD_ID&gt;/tasks</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GUILD_ID</td>
+<td>The ID of the guild you want to view the tasks of</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-task'>Get a Task</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">guild</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">guilds</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">guild</span><span class="p">.</span><span class="nf">tasks</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/guilds/&lt;GUILD_ID&gt;/tasks/&lt;ID&gt;"</span>
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Task"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimum_amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"minimum_amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"workspace"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"connections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/guild/&lt;GUILD_ID&gt;/tasks/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>GUILD_ID</td>
+<td>The ID of the guild the task is from</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>The ID of the task</td>
+</tr>
+</tbody></table>
+<h1 id='workspaces'>Workspaces</h1><h2 id='the-workspace-object'>The Workspace Object</h2>
+<blockquote>
+<p>The Workspae object looks like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Workspace"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Audio Transcription Interface"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://preview.interface.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"permissions"</span><span class="p">:</span><span class="w"> </span><span class="s2">"open"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Workspaces are any statically hosted website that can take parameters in through
+the URL, allow workers to perform transformations on them, and then send their
+data back through a form to a given destination.</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>object</td>
+<td>The object being described by the incoming data, in this case a workspace.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The ID of the workspace.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>The workspace name.</td>
+</tr>
+<tr>
+<td>preview</td>
+<td>A link to preview the workspace at.</td>
+</tr>
+<tr>
+<td>permissions</td>
+<td>The permissions level of the interface.</td>
+</tr>
+</tbody></table>
+
+<p>Permissions can be one of two states:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>open</td>
+<td>The workspace is open for others to use in their own guilds.</td>
+</tr>
+<tr>
+<td>closed</td>
+<td>The workspace is private to its creator.</td>
+</tr>
+</tbody></table>
+<h2 id='acceptable-workspaces'>Acceptable Workspaces</h2>
+<p>Workspaces are any web server which follows some specific rules:</p>
+
+<ol>
+<li>It must pass through some URL parameters into its form as listed below.</li>
+<li>It must provide the user a submit button which returns information to the submitTo parameter value.</li>
+<li>It must use HTTPs protocol.</li>
+<li>It must be accessible to the guild members.</li>
+</ol>
+
+<p>The attributes it must pass are:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>workerId</td>
+<td>The ID of the worker who is completing the assignment</td>
+</tr>
+<tr>
+<td>assignmentId</td>
+<td>The ID of the assignment the work is submitted to</td>
+</tr>
+<tr>
+<td>submitTo</td>
+<td>The URL that the form should be submitted to.</td>
+</tr>
+</tbody></table>
+
+<p>Make sure your form submits to the submitTo value with the assignmentId as a
+hidden field.</p>
+
+<aside class="warning">
+AJAX requests will not work.
+The user must submit the form directly by the user.
+</aside>
 <h1 id='batches'>Batches</h1><h2 id='the-batch-object'>The Batch Object</h2>
 <blockquote>
 <p>The Batch object looks like this:</p>
@@ -500,20 +1000,17 @@ processes.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/10"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data_completed_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="w">
   </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Batches are created when you send data to a guild.</p>
+<p>Batches are created when you send data to a <a href="#the-guild-object">Guild</a>.</p>
 
-<p>They hold information about groupings of data, which are used to prioritize
-which pieces of data get completed by a guild at any given time.</p>
-
-<p>When you create a Batch, it is unpaid. Guilds will not work
-on Contracts which are unpaid to a price floor they set.</p>
+<p>Batches must be funded before they are given to guild <a href="#the-member-object">Members</a> to work on.</p>
 
 <p>The object has the following attributes:</p>
 
@@ -532,12 +1029,12 @@ on Contracts which are unpaid to a price floor they set.</p>
 <td>The ID of the batch being returned.</td>
 </tr>
 <tr>
-<td>fraction_completed</td>
-<td>The number of data completed out of the total number in the batch.</td>
+<td>data_completed_count</td>
+<td>A count of all completed data in the batch.</td>
 </tr>
 <tr>
-<td>completed</td>
-<td>Returns true if the batch data is all completed, otherwise false.</td>
+<td>data_count</td>
+<td>A count of all data in the batch.</td>
 </tr>
 <tr>
 <td>status</td>
@@ -545,7 +1042,29 @@ on Contracts which are unpaid to a price floor they set.</p>
 </tr>
 </tbody></table>
 
-<p>The status of a batch object can be one of the following:</p>
+<p>The data object has the following attributes:</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The ID of the datum being returned.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>A status describing the current state of the datum.</td>
+</tr>
+<tr>
+<td>parameters</td>
+<td>A hash structure of the given parameters and those added by workers.</td>
+</tr>
+</tbody></table>
+
+<p>The status of a Batch object can be one of the following:</p>
 
 <table><thead>
 <tr>
@@ -553,6 +1072,10 @@ on Contracts which are unpaid to a price floor they set.</p>
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>Unpaid</td>
+<td>The batch as not yet been funded.</td>
+</tr>
 <tr>
 <td>Processing</td>
 <td>Not all data in the batch has been completed.</td>
@@ -574,51 +1097,65 @@ on Contracts which are unpaid to a price floor they set.</p>
   -d <span class="s2">"@data.json"</span>
 </code></pre>
 <blockquote>
-<p>Your data.json file should look like:</p>
+<p>If we have a guild with only one input parameter with a key value of
+&quot;image_url&quot;.</p>
+
+<p>Then your data.json file should look like:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"batch"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"data_attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="err">parameters_attributes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="err">key</span><span class="p">:</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">,</span><span class="w">
-            </span><span class="err">value</span><span class="p">:</span><span class="w">  </span><span class="s2">"www.images.com/image1.png"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="err">parameters_attributes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-          </span><span class="p">{</span><span class="w">
-            </span><span class="err">key</span><span class="p">:</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">,</span><span class="w">
-            </span><span class="err">value</span><span class="p">:</span><span class="w">  </span><span class="s2">"www.images.com/image1.png"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-        </span><span class="p">]</span><span class="w">
-      </span><span class="p">}</span><span class="w">
+    </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image1.png"</span><span class="p">,</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image2.png"</span><span class="p">,</span><span class="w"> </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image3.png"</span><span class="p">,</span><span class="w"> </span><span class="p">},</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
+<p>Each key value within the &quot;data&quot; array should match the required input
+parameters for the Guild.</p>
+
 <p>Which should return your batch:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0/2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unpaid"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data_completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image1.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image2.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"parameters"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image3.png"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>A Batch must be created for a specific Guild.</p>
+<p>A Batch must be created for a specific <a href="#the-guild-object">Guild</a>.</p>
 
-<p>Once created the Batch is set to unpaid.</p>
+<p>Batches must be funded before they are sent to the guild <a href="#the-member-object">Members</a>.</p>
 
-<p>You can pay for a Batch by creating a payment for it.</p>
-
-<p>When a Batch has been paid for it is sent to the Guild&#39;s queue to be processed.</p>
+<p>When a Batch has been funded it is sent to the guild&#39;s <a href="#the-task-object">Task</a>  queue to be processed.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST http://openguilds.com/api/batches</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
@@ -630,7 +1167,7 @@ on Contracts which are unpaid to a price floor they set.</p>
 </thead><tbody>
 <tr>
 <td>data</td>
-<td>An array of json, which for each object is converted into a Datum&#39;s payload</td>
+<td>JSON formatted with the example above.</td>
 </tr>
 </tbody></table>
 <h2 id='get-all-batches'>Get All Batches</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
@@ -649,9 +1186,10 @@ on Contracts which are unpaid to a price floor they set.</p>
   </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/10"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"data_completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
@@ -675,18 +1213,12 @@ on Contracts which are unpaid to a price floor they set.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fraction_completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/10"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"completed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="w">
+  </span><span class="s2">"data_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data_completed_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">],</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-  </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"42"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="err">...data...</span><span class="p">}]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://example.com/batches/&lt;ID&gt;</code></p>
@@ -714,7 +1246,7 @@ on Contracts which are unpaid to a price floor they set.</p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"batch"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"canceled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -722,7 +1254,7 @@ on Contracts which are unpaid to a price floor they set.</p>
 <p>Canceling a batch is made with a delete request. We delete the contents of the
 batch but keep a record of it being canceled.</p>
 
-<p>Refunds will be given for data that have not yet been contracted by workers.</p>
+<p>Refunds will be given for data that have not yet been accepted by <a href="#the-member-object">Members</a>.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>DELETE https://openguilds.com/batches/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
@@ -750,18 +1282,12 @@ batch but keep a record of it being canceled.</p>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Debit"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guild Debit"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"$2.00"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="s2">"amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>You can pay for a batch by creating a Debit Transaction.
-The payment will take your Credits and bind them to a contract for a Worker.
-The Worker is given the Credit upon the completion criteria of the Contract
-being met.</p>
+<p>You can pay for a Batch by creating a guild debit <a href="#the-transaction-object">Transaction</a>.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>POST http://openguilds.com/api/batches/&lt;ID&gt;/debits</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
@@ -776,350 +1302,7 @@ being met.</p>
 <td>The ID of the Batch to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='data'>Data</h1><h2 id='the-datum-object'>The Datum Object</h2>
-<blockquote>
-<p>The Datum object looks like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-  </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"contracts_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Data is what gets processed through Guilds in Batches.</p>
-
-<p>A Datum is a single piece of Data.
-A Datum has a parent-child relationship with other data to form a Chain.</p>
-
-<p>Chains describe the evolution of a data as it is passed from Worker to Worker,
-or split/combined with other Data.</p>
-
-<p>Data are marked completed when the entire Chain that Data is a part of has
-been completed.</p>
-
-<p>Chains can be audited and modified until the proper solution has evolved from the
-Data with the help of Workers.</p>
-
-<p>A Datum has the following attributes:</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>object</td>
-<td>The object being described by the incoming data, in this case a Datum.</td>
-</tr>
-<tr>
-<td>id</td>
-<td>The ID of the Datum being returned.</td>
-</tr>
-<tr>
-<td>payload</td>
-<td>The URL parameter payload to be put in to the interface.</td>
-</tr>
-<tr>
-<td>chain</td>
-<td>An ordered, nested hash of evolved Data, may be empty.</td>
-</tr>
-<tr>
-<td>depth</td>
-<td>The generation of the evolved Data.</td>
-</tr>
-<tr>
-<td>contracts_count</td>
-<td>the total number of Contracts connected to this Datum.</td>
-</tr>
-<tr>
-<td>status</td>
-<td>The current status of a given Datum.</td>
-</tr>
-</tbody></table>
-
-<p>The status of a Datum object can be one of the following:</p>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Processing</td>
-<td>The Chain this Datum is a part of has not yet been completed.</td>
-</tr>
-<tr>
-<td>Completed</td>
-<td>The Chain this Datum is a part of has been completed.</td>
-</tr>
-</tbody></table>
-<h2 id='add-a-datum-to-a-batch'>Add a Datum to a Batch</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
-<span class="n">datum_payload</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">image_url: </span><span class="s2">"www.images.com/image/1.png"</span> <span class="p">}.</span><span class="nf">to_json</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">batches</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="nf">add</span><span class="p">(</span><span class="n">datum_payload</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/batch/&lt;batch_id&gt;/data"</span>
-  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-  -d <span class="s2">"@data.json"</span>
-</code></pre>
-<blockquote>
-<p>Your data.json file should look like:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> </span><span class="s2">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.images.com/image1.png"</span><span class="w"> </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<blockquote>
-<p>Which should return your Datum:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-  </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"contracts_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Data can be created directly and added to a Batch by giving it a Batch ID.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>POST http://openguilds.com/api/batches/&lt;batch_id&gt;/data</code></p>
-<h2 id='get-a-datum'>Get a Datum</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">data</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/data/&lt;ID&gt;"</span>
-  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"chain"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-  </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"processing"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"contracts_count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://openguilds.com/api/data/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the batch to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-datum'>Delete a Datum</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">data</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/data/&lt;ID&gt;"</span>
-  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
-  -X DELETE
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Datum"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Deletes the Datum and all children in the Chain.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET http://openguilds.com/api/data/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the batch to delete.</td>
-</tr>
-</tbody></table>
-<h1 id='chains'>Chains</h1><h2 id='the-chain-object'>The Chain Object</h2>
-<blockquote>
-<p>Assuming you had the following chain of Data, as represented by their ID&#39;s:</p>
-
-<p>1 -&gt; 2 -&gt; 3</p>
-
-<p>The Chain would then look like:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chain"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/data/&lt;ID&gt;/chain"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"root_datum_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"3"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>Chains can be accessed from any Datum. That Datum will act as the root node for
-the chain.</p>
-
-<p>The object has the following attributes:</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>object</td>
-<td>The object being described by the incoming data, in this case a Chain.</td>
-</tr>
-<tr>
-<td>url</td>
-<td>The URL of for the resource if you need to request for more.</td>
-</tr>
-<tr>
-<td>has_more</td>
-<td>Returns true if the hash was limited and there is more past the deepest node.</td>
-</tr>
-<tr>
-<td>root_datum_id</td>
-<td>The ID of the datum being used as the tree root.</td>
-</tr>
-<tr>
-<td>depth</td>
-<td>A number representing the tree depth of the newest generation.</td>
-</tr>
-<tr>
-<td>completed</td>
-<td>Returns true if the batch data is all completed, otherwise false.</td>
-</tr>
-<tr>
-<td>status</td>
-<td>A status describing the current state of the batch.</td>
-</tr>
-</tbody></table>
-
-<p>The status of a batch object can be one of the following:</p>
-
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Processing</td>
-<td>Not all data in the chain has been completed.</td>
-</tr>
-<tr>
-<td>Completed</td>
-<td>All data in the chain has been processed and marked as complete.</td>
-</tr>
-</tbody></table>
-<h2 id='get-a-chain'>Get a Chain</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
-<span class="n">datum</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">data</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="o">&lt;</span><span class="no">ID</span><span class="o">&gt;</span><span class="p">)</span>
-<span class="n">datum</span><span class="p">.</span><span class="nf">chain</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/data/&lt;ID&gt;/chain"</span>
-  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chain"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/data/&lt;ID&gt;/chain"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"root_datum_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"depth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Processing"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>A Chain contains ordered, nested information about how a piece of data has
-evolved over time.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://openguilds.com/api/data/&lt;ID&gt;/chain</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the datum to retrieve</td>
-</tr>
-</tbody></table>
-<h1 id='worker-interfaces'>Worker Interfaces</h1><h2 id='acceptable-interfaces'>Acceptable Interfaces</h2>
-<p>Interfaces are any web server which follows some specific rules:</p>
-
-<ol>
-<li>It must pass through some URL parameters into its form as listed below.</li>
-<li>It must provide the user a submit button which returns information to OpenGuilds.</li>
-<li>It must use HTTPs protocol.</li>
-<li>It must be accessible to the Workers.</li>
-</ol>
-
-<p>The attributes it must pass are:</p>
-
-<table><thead>
-<tr>
-<th>Attribute</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>workerId</td>
-<td>The ID of the worker who is completing your Contract</td>
-</tr>
-<tr>
-<td>assignmentId</td>
-<td>The ID of the Contract the work is submitted to</td>
-</tr>
-<tr>
-<td>submitToUrl</td>
-<td>The URL that the form shoud be submitted to.</td>
-</tr>
-</tbody></table>
-
-<p>Make sure your form submits to the submitToUrl value with the assignmentId as a
-hidden field.</p>
-
-<aside class="warning">
-AJAX requests will not work. The user must submit the form directly by the user.
-</aside>
-<h2 id='creating-an-interface'>Creating an Interface</h2><h1 id='wallet'>Wallet</h1><h2 id='the-wallet-object'>The Wallet Object</h2>
+<h1 id='wallet'>Wallet</h1><h2 id='the-wallet-object'>The Wallet Object</h2>
 <blockquote>
 <p>The Wallet object looks like this:</p>
 </blockquote>
@@ -1128,13 +1311,16 @@ AJAX requests will not work. The user must submit the form directly by the user.
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$20.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Wallets are created when a user account is created.</p>
+<p>Each <a href="#the-guild-object">Guild</a> you join has its own individual Wallet.</p>
 
-<p>Wallets store a history of Transactions, which can be Credit, or Debit types.</p>
+<p>Wallets store a history of <a href="#the-transaction-object">Transactions</a>, which can be different types.</p>
+
+<p>Wallet credits can be exchanged by workers by requesting a payout.</p>
 
 <p>A Wallet has the following attributes:</p>
 
@@ -1168,9 +1354,9 @@ AJAX requests will not work. The user must submit the form directly by the user.
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Guild Credit"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+  </span><span class="s2">"amount_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1195,22 +1381,52 @@ AJAX requests will not work. The user must submit the form directly by the user.
 </tr>
 <tr>
 <td>type</td>
-<td>The type of the transaction, can be either Credit or Debit.</td>
+<td>The type of the transaction, can be one of Guild Credit, Guild Debit, Amazon Credit, Amazon Debit, Fiat Credit, or Fiat debit.</td>
 </tr>
 <tr>
 <td>amount</td>
-<td>The amount either credited or debited from the account.</td>
+<td>The amount either credited or debited during the transaction.</td>
 </tr>
 <tr>
-<td>source</td>
-<td>Details of the object which was purchased or paid for.</td>
+<td>amount_cents</td>
+<td>The amount credited or debited during the transaction in cents.</td>
 </tr>
 </tbody></table>
-<h2 id='show-your-wallet'>Show your Wallet</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+<h2 id='get-all-wallets'>Get all Wallets</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">wallet</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/wallet"</span>
+<span class="n">wallets</span> <span class="o">=</span> <span class="n">api</span><span class="p">.</span><span class="nf">wallets</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/wallets
+  -u "</span>8641fb38-294a-41d9-9591-3449dfd99910<span class="s2">"
+</span></code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"List"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/api/wallets"</span><span class="w">
+  </span><span class="s2">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
+      </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$20.00"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h3 id='http-request'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/wallets</code></p>
+<h2 id='get-a-wallet'>Get a Wallet</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
+<span class="n">api</span><span class="p">.</span><span class="nf">wallet</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/wallet/&lt;ID&gt;"</span>
   -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
 </code></pre>
 <blockquote>
@@ -1221,51 +1437,12 @@ AJAX requests will not work. The user must submit the form directly by the user.
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="err">...</span><span class="p">],</span><span class="w">
   </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$20.00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance_cents"</span><span class="p">:</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w">
   </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://openguilds.com/api/wallet/</code></p>
-<h2 id='purchase-credits'>Purchase Credits</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Client</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">wallet</span><span class="p">.</span><span class="nf">purchase</span><span class="p">(</span>
-  <span class="ss">email: </span><span class="s1">'customer@email.com'</span><span class="p">,</span>
-  <span class="ss">token: </span><span class="s1">'stripe-token-here'</span><span class="p">,</span>
-  <span class="ss">amount: </span><span class="mi">500</span>
-<span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://openguilds.com/api/wallet"</span>
-  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
-  -d <span class="nv">email</span><span class="o">=</span><span class="s2">"customer@email.com"</span>
-  -d <span class="nv">token</span><span class="o">=</span><span class="s2">"stripe-token-here"</span>
-  -d <span class="nv">amount</span><span class="o">=</span>500
-</code></pre>
-<blockquote>
-<p>Which should return your Wallet:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallet"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"transactions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"object"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Transaction"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Credit"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
-      </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$5.00"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:29.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"updated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-05-22T14:56:28.000Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>Wallet Credits are purchased through Stripe&#39;s API.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST http://openguilds.com/api/wallet/credits</code></p>
+</span></code></pre><h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://openguilds.com/api/wallet/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1274,16 +1451,8 @@ AJAX requests will not work. The user must submit the form directly by the user.
 </tr>
 </thead><tbody>
 <tr>
-<td>email</td>
-<td>The email which will be used to create the Stripe Customer</td>
-</tr>
-<tr>
-<td>token</td>
-<td>The token provided by Stripe Checkout</td>
-</tr>
-<tr>
-<td>amount</td>
-<td>The amount in cents the user would like to purchase</td>
+<td>ID</td>
+<td>The ID of the Wallet to retrieve</td>
 </tr>
 </tbody></table>
 
