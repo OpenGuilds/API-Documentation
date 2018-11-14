@@ -7,7 +7,8 @@
 {
   "object": "Batch",
   "id": "1",
-  "fraction_completed": "5/10",
+  "data_completed_count": "5",
+  "data_count": "10"
   "completed": "false",
   "status": "processing",
   "created": "2015-05-22T14:56:29.000Z",
@@ -15,13 +16,10 @@
 }
 ```
 
-Batches are created when you send data to a guild.
+Batches are created when you send data to a [Guild](#the-guild-object).
 
-They hold information about groupings of data, which are used to prioritize
-which pieces of data get completed by a guild at any given time.
+Batches must be funded before they are given to guild [Members](#the-member-object) to work on.
 
-When you create a Batch, it is unpaid. Guilds will not work
-on Contracts which are unpaid to a price floor they set.
 
 The object has the following attributes:
 
@@ -29,15 +27,25 @@ Attribute | Description
 --------- | -----------
 object | The object being described by the incoming data, in this case a Batch.
 id | The ID of the batch being returned.
-fraction_completed | The number of data completed out of the total number in the batch.
-completed | Returns true if the batch data is all completed, otherwise false.
+data_completed_count | A count of all completed data in the batch.
+data_count | A count of all data in the batch.
 status | A status describing the current state of the batch.
 
 
-The status of a batch object can be one of the following:
+The data object has the following attributes:
+
+Attribute | Description
+--------- | -----------
+id | The ID of the datum being returned.
+status | A status describing the current state of the datum.
+parameters | A hash structure of the given parameters and those added by workers.
+
+
+The status of a Batch object can be one of the following:
 
 Status | Description
 --------- | -----------
+Unpaid | The batch as not yet been funded.
 Processing | Not all data in the batch has been completed.
 Completed | All data in the batch has been processed and marked as complete.
 
@@ -58,32 +66,24 @@ curl "https://openguilds.com/api/batch"
   -d "@data.json"
 ```
 
-> Your data.json file should look like:
+> If we have a guild with only one input parameter with a key value of
+> "image_url".
+
+> Then your data.json file should look like:
 
 ```json
 {
   "batch": {
-    "data_attributes": [
-      {
-        parameters_attributes: [
-          {
-            key: "image_url",
-            value:  "www.images.com/image1.png"
-          },
-        ]
-      },
-      {
-        parameters_attributes: [
-          {
-            key: "image_url",
-            value:  "www.images.com/image1.png"
-          },
-        ]
-      }
+    "data": [
+      { "image_url": "www.images.com/image1.png", },
+      { "image_url": "www.images.com/image2.png", },
+      { "image_url": "www.images.com/image3.png", },
     ]
   }
 }
 ```
+> Each key value within the "data" array should match the required input
+> parameters for the Guild.
 
 > Which should return your batch:
 
@@ -91,21 +91,42 @@ curl "https://openguilds.com/api/batch"
 {
   "object": "Batch",
   "id": "1",
-  "fraction_completed": "0/2",
-  "completed": "false",
-  "status": "unpaid",
+  "data_count": 3,
+  "data_completed_count": 0,
+  "status": "processing",
+  "data": [
+    {
+      "id": "1",
+      "status": "processing",
+      "parameters": {
+        "image_url": "www.images.com/image1.png"
+      }
+    },
+    {
+      "id": "2",
+      "status": "processing",
+      "parameters": {
+        "image_url": "www.images.com/image2.png"
+      }
+    },
+    {
+      "id": "3",
+      "status": "processing",
+      "parameters": {
+        "image_url": "www.images.com/image3.png"
+      }
+    }
+  ]
   "created": "2015-05-22T14:56:29.000Z",
   "updated": "2015-05-22T14:56:28.000Z"
 }
 ```
 
-A Batch must be created for a specific Guild.
+A Batch must be created for a specific [Guild](#the-guild-object).
 
-Once created the Batch is set to unpaid.
+Batches must be funded before they are sent to the guild [Members](#the-member-object).
 
-You can pay for a Batch by creating a payment for it.
-
-When a Batch has been paid for it is sent to the Guild's queue to be processed.
+When a Batch has been funded it is sent to the guild's [Task](#the-task-object)  queue to be processed.
 
 
 ### HTTP Request
@@ -116,7 +137,7 @@ When a Batch has been paid for it is sent to the Guild's queue to be processed.
 
 Parameter | Description
 --------- | -----------
-data | An array of json, which for each object is converted into a Datum's payload
+data | JSON formatted with the example above.
 
 ## Get All Batches
 ```ruby
@@ -140,9 +161,10 @@ curl "https://openguilds.com/api/guilds"
   "has_more": "false",
   "data": [
     {
+      "object": "Batch",
       "id": "1",
-      "fraction_completed": "5/10",
-      "completed": "false",
+      "data_count": 3,
+      "data_completed_count": 0,
       "status": "processing",
       "created": "2015-05-22T14:56:29.000Z",
       "updated": "2015-05-22T14:56:28.000Z"
@@ -177,18 +199,12 @@ curl "https://openguilds.com/api/batches/1"
 {
   "object": "Batch",
   "id": "1",
-  "fraction_completed": "5/10",
-  "completed": "false",
-  "status": "processing"
+  "data_count": 3,
+  "data_completed_count": 0,
+  "status": "processing",
+  "data": [ ... ],
   "created": "2015-05-22T14:56:29.000Z",
   "updated": "2015-05-22T14:56:28.000Z"
-  "relationships": [
-    "user": {
-      "id": "42",
-      "type": "user"
-    }
-  ]
-  "data": [{...data...}]
 }
 ```
 
@@ -220,7 +236,7 @@ curl "https://openguilds.com/api/batches/1"
 
 ```json
 {
-  "object": "batch",
+  "object": "Batch",
   "id": "1",
   "canceled": true
 }
@@ -229,7 +245,7 @@ curl "https://openguilds.com/api/batches/1"
 Canceling a batch is made with a delete request. We delete the contents of the
 batch but keep a record of it being canceled.
 
-Refunds will be given for data that have not yet been contracted by workers.
+Refunds will be given for data that have not yet been accepted by [Members](#the-member-object).
 
 ### HTTP Request
 
@@ -261,19 +277,13 @@ curl "https://openguilds.com/api/batches/<ID>/debits"
 {
   "object": "Transaction",
   "id": 2,
-  "type": "Debit",
+  "type": "Guild Debit",
   "amount" : "$2.00",
-  "source": {
-    "object": "Batch",
-    "id": "1"
-  }
+  "amount_cents": 200,
 }
 ```
 
-You can pay for a batch by creating a Debit Transaction.
-The payment will take your Credits and bind them to a contract for a Worker.
-The Worker is given the Credit upon the completion criteria of the Contract
-being met.
+You can pay for a Batch by creating a guild debit [Transaction](#the-transaction-object).
 
 ### HTTP Request
 
