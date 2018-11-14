@@ -15,19 +15,19 @@
 }
 ```
 
-Guilds are online organizations with a community of Members.
+Guilds are online organizations with a community of [Members](#the-member-object).
 
-Guilds are made up of many Tasks where Members process data by modifying it
-through Interfaces.
+Guilds are made up of many [Tasks](#the-task-object) where [Members](#the-member-object) process data by modifying it
+through [Workspaces](#the-workspace-object).
 
 The object has the following attributes:
 
 Attribute | Description
 --------- | -----------
-object | The object being described by the incoming data, in this case a Guild.
+object | The object being described by the incoming data, in this case a guild.
 id | The ID of the batch being returned.
-name | The name of the Guild.
-description | A description of the Guild.
+name | The name of the guild.
+description | A description of the guild.
 
 ## Get a Guild
 ```ruby

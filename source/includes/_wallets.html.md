@@ -16,9 +16,9 @@
 }
 ```
 
-Each Guild you join has its own individual Wallet.
+Each [Guild](#the-guild-object) you join has its own individual Wallet.
 
-Wallets store a history of Transactions, which can be different types.
+Wallets store a history of [Transactions](#the-transaction-object), which can be different types.
 
 Wallet credits can be exchanged by workers by requesting a payout.
 

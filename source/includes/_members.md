@@ -16,8 +16,9 @@
 }
 ```
 
-Members are individuals in a Guilds community.
-Members can get qualifications, subscribe to tasks and perform work for a Guild.
+Members are individuals in a [Guilds](#the-guild-object) community.
+Members can get qualifications, subscribe to [Tasks](#the-task-object) 
+and perform work for a [Guild](#the-guild-object).
 
 Members are rewarded for their correct work with guild credits.
 Members can request a payout from a guild which is then authorized by the guild owner.

@@ -1,12 +1,12 @@
 ---
-title: API Reference
+title: OpenGuilds API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
   - ruby
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://dashboard.openguilds.com'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -49,7 +49,7 @@ curl "api_endpoint_here"
 > Make sure to replace `8641fb38-294a-41d9-9591-3449dfd99910` with your API key.
 
 OpenGuilds uses API keys to allow access to the API. 
-You can register a new OpenGuilds API key at our [developer portal](http://dashboard.openguilds.com/account).
+You can register a new OpenGuilds API key at our [developer portal](https://dashboard.openguilds.com/account).
 
 Authentication is done using an API secret key in a given request. 
 Manage API keys from your dashboard. API keys allow access to all functions of 
@@ -60,7 +60,7 @@ Authentication is performed via HTTP Basic Auth.
 Provide your API key as the basic auth username value. 
 You do not need to provide a password.
 
-All API requests will be made of HTTPS. Calls over plain HTTP will fail. 
+All API requests will be made over HTTPS. Calls over plain HTTP will fail. 
 API requests without authentication will also fail.
 
 OpenGuilds expects for the API key to be included in all API requests to 

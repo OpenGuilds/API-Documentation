@@ -16,13 +16,10 @@
 }
 ```
 
-Batches are created when you send data to a guild.
+Batches are created when you send data to a [Guild](#the-guild-object).
 
-They hold information about groupings of data, which are used to prioritize
-which pieces of data get completed by a guild at any given time.
+Batches must be funded before they are given to guild [Members](#the-member-object) to work on.
 
-When you create a Batch, it is unpaid. Guilds will not work
-on Contracts which are unpaid to a price floor they set.
 
 The object has the following attributes:
 
@@ -44,10 +41,11 @@ status | A status describing the current state of the datum.
 parameters | A hash structure of the given parameters and those added by workers.
 
 
-The status of a batch object can be one of the following:
+The status of a Batch object can be one of the following:
 
 Status | Description
 --------- | -----------
+Unpaid | The batch as not yet been funded.
 Processing | Not all data in the batch has been completed.
 Completed | All data in the batch has been processed and marked as complete.
 
@@ -124,11 +122,11 @@ curl "https://openguilds.com/api/batch"
 }
 ```
 
-A Batch must be created for a specific Guild.
+A Batch must be created for a specific [Guild](#the-guild-object).
 
-Batches must be funded before they are sent to the guild members.
+Batches must be funded before they are sent to the guild [Members](#the-member-object).
 
-When a Batch has been funded it is sent to the guild's task queue to be processed.
+When a Batch has been funded it is sent to the guild's [Task](#the-task-object)  queue to be processed.
 
 
 ### HTTP Request
@@ -247,7 +245,7 @@ curl "https://openguilds.com/api/batches/1"
 Canceling a batch is made with a delete request. We delete the contents of the
 batch but keep a record of it being canceled.
 
-Refunds will be given for data that have not yet been contracted by workers.
+Refunds will be given for data that have not yet been accepted by [Members](#the-member-object).
 
 ### HTTP Request
 
@@ -285,7 +283,7 @@ curl "https://openguilds.com/api/batches/<ID>/debits"
 }
 ```
 
-You can pay for a Batch by creating a debit transaction.
+You can pay for a Batch by creating a guild debit [Transaction](#the-transaction-object).
 
 ### HTTP Request
 

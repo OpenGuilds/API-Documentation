@@ -13,6 +13,7 @@
     "name": "Audio Transcription Interface",
     "link": "api/workspaces/1"
     "preview": "https://preview.interface.com",
+    "permissions": "open"
   },
   "connections": [
     {
@@ -26,13 +27,13 @@
 }
 ```
 
-Tasks are the atomic units of work a Guild performs on incoming data.
-Members subscribe to tasks to receive work into their inboxes that they can
+Tasks are the atomic units of work a [Guild](#the-guild-object) performs on incoming data.
+[Members](#the-member-object) subscribe to tasks to receive work into their inboxes that they can
 claim.
 
-To subscribe to a Task, members must have all the required qualifications.
+To subscribe to a Task, [Members](#the-member-object) must have all the required qualifications.
 
-Members perform work on data through a Workspace.
+[Members](#the-member-object) perform work on data through a [Workspace](#the-workspace-object).
 
 Tasks are bound together through connections.
 
