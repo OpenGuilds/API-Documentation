@@ -59,7 +59,7 @@ source | The ID of the task used as the source of the data transfer.
 target | The ID of the task used as the destination of the data transfer.
 
 
-## List all Tasks
+## Get all Tasks
 ```ruby
 require 'open-guilds'
 
