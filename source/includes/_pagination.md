@@ -1,5 +1,40 @@
 #Pagination
 
+## The List Object
+
+> The list object looks like this:
+
+```json
+{
+  "object": "List",
+  "url": "/api/batches",
+  "has_more": false,
+  "page": 1,
+  "data": [ ... ]
+}
+```
+
+
+All top-level API resources have support for bulk fetches via "list" API methods. 
+
+For instance, you can [list guilds](#list-all-guilds), 
+[list members](#list-all-members), and [list tasks](#list-all-tasks). 
+
+Lists help you manage requests that exceed the 100 return limit on objects.
+By requesting 100 objects pages at a time until "has_more" returns false,
+you can crawl through thousands of objects in an ordered way.
+
+
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | A string for the objects type.
+url | string | the url for a successive request.
+has_more | boolean | A true or false value based on if there is another page.
+page | integer | The current page number.
+data | array(objects) | An array of requested objects.
+
+## Options
+
 > An example of a call using a list limit:
 
 ```ruby
@@ -15,11 +50,8 @@ curl "https://dashboard.openguilds.com/api/guilds/<ID>?limit=10"
   -G
 ```
 
-All top-level API resources have support for bulk fetches via "list" API methods. 
-For instance, you can [list guilds](#list-all-guilds), 
-[list members](#list-all-members), and [list tasks](#list-all-tasks). 
 
-Pagination takes 2 parameters
+List requests takes 2 additional parameters:
 
 Parameter | Description
 --------- | -----------

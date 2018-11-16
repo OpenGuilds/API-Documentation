@@ -21,13 +21,13 @@ the URL, allow workers to perform transformations on them, and then send their
 data back through a form to a given destination.
 
 
-Attribute | Description
---------- | -----------
-object | The object being described by the incoming data, in this case a workspace.
-id | The ID of the workspace.
-name | The workspace name.
-preview | A link to preview the workspace at.
-permissions | The permissions level of the interface.
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | A string representing the object type.
+id | string | The ID of the workspace.
+name | string | The workspace name.
+preview | string | A valid https link to preview the workspace at.
+permissions | string | The permissions level of the interface.
 
 Permissions can be one of two states:
 

@@ -16,22 +16,25 @@
 }
 ```
 
-Each [Guild](#the-guild-object) you join has its own individual Wallet.
+Each [guild](#the-guild-object) you join has its own individual Wallet.
 
-Wallets store a history of [Transactions](#the-transaction-object), which can be different types.
+Wallets store a history of [transactions](#the-transaction-object), 
+which can be different types.
 
 Wallet credits can be exchanged by workers by requesting a payout.
 
 A Wallet has the following attributes:
 
-Attribute | Description
---------- | -----------
-object | The object being described by the incoming data, in this case a Wallet.
-id | The ID of the Wallet being returned.
-transactions | A time ordered history of Transactions, with the newest first.
-balance | The total amount of Credits from adding all Credits minus Debits.
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | A string representing the object type.
+id | string | The ID of the Wallet being returned.
+transactions | array[transactions] | A time ordered history of Transactions, with the newest first.
+balance | string | The total amount of Credits from adding all Credits minus Debits.
+balance_cents | integer | The balance represented in cents.
 
 ## The Transaction Object
+
 > The Transaction object looks like this:
 
 ```json
@@ -46,21 +49,35 @@ balance | The total amount of Credits from adding all Credits minus Debits.
 }
 ```
 
-Transactions are created when paying for something, or purchasing Credits.
+Transactions are created when paying for something, or exchanging credits.
 
 A Transaction has the following attributes:
 
-Attribute | Description
---------- | -----------
-object | The object being described by the incoming data, in this case a Wallet.
-id | The ID of the Wallet being returned.
-type | The type of the transaction, can be one of Guild Credit, Guild Debit, Amazon Credit, Amazon Debit, Fiat Credit, or Fiat debit.
-amount | The amount either credited or debited during the transaction.
-amount_cents | The amount credited or debited during the transaction in cents.
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | A string representing the object type.
+id | string | The ID of the Wallet being returned.
+type | string | The type of the transaction, can be one of the valid transaction types.
+amount | string | The amount either credited or debited during the transaction.
+amount_cents | integer | The amount credited or debited during the transaction in cents.
+
+A transaction can have the following types:
+
+Type | Description
+---- | -----------
+Guild Credit | A positive transfer of guild currency.
+Guild Debit | A negative transfer of guild currency.
+Amazon Credit | A positive transfer of Amazon credits.
+Amazon Debit | A negative transfer of Amazon credits.
+Fiat Credit | A positive transfer of fiat money.
+Fiat Debit | A negative transfer of fiat money.
 
 
 
-## Get all Wallets
+## List all Wallets
+
+Will return all wallets belonging to the user.
+
 ```ruby
 require 'open-guilds'
 
@@ -81,6 +98,7 @@ curl "https://openguilds.com/api/wallets
   "object": "List",
   "url": "/api/wallets"
   "has_more": "false",
+  "page": 1,
   "data": [
     {
       "object": "Wallet",
@@ -102,6 +120,9 @@ curl "https://openguilds.com/api/wallets
 
 
 ## Get a Wallet
+
+Will return a wallet object belonging to the authenticated user.
+
 ```ruby
 require 'open-guilds'
 

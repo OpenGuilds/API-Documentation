@@ -27,36 +27,42 @@
 }
 ```
 
-Tasks are the atomic units of work a [Guild](#the-guild-object) performs on incoming data.
-[Members](#the-member-object) subscribe to tasks to receive work into their inboxes that they can
-claim.
+[Guilds](#the-guild-object) have a series of tasks they perform on each piece of data.
 
-To subscribe to a Task, [Members](#the-member-object) must have all the required qualifications.
+[Members](#the-member-object) subscribe to tasks to receive the tasks work.
 
-[Members](#the-member-object) perform work on data through a [Workspace](#the-workspace-object).
+To subscribe to a task, [members](#the-member-object) must have all the required 
+qualifications, which can be created by going to the task page.
 
-Tasks are bound together through connections.
+[Members](#the-member-object) perform work on data by transforming it through a
+[workspace](#the-workspace-object).
+
+Tasks are bound together through connections which are created on your
+[guild](#the-guild-object) page.
 
 
 The object has the following attributes:
 
-Attribute | Description
---------- | -----------
-object | The object being described by the incoming data, in this case a Task
-id | The ID of the task being returned.
-minimum_amount | The minimum cost of a datum being processed through this task.
-minimum_amount_cents | The minimum cost of a datum being processed through this task in cents.
-workspace | The connected workspace object for this task.
-connections | A list of associated connection objects.
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | The object being described by the incoming data, in this case a Task
+id | string | The ID of the task being returned.
+minimum_amount | string | The minimum cost of a datum being processed through this task.
+minimum_amount_cents | integer | The minimum cost of a datum being processed through this task in cents.
+workspace | object | The connected workspace object for this task.
+connections | object | A list of associated connection objects.
 
 
 The Connection object has the following attributes:
 
-Attribute | Description
---------- | -----------
-object | The object being described by the incoming data, in this case a Connection
-source | The ID of the task used as the source of the data transfer.
-target | The ID of the task used as the destination of the data transfer.
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | The object being described by the incoming data, in this case a Connection
+source | string | The ID of the task used as the source of the data transfer.
+target | string | The ID of the task used as the destination of the data transfer.
+
+An inbound connection has the task object ID match the target ID, and an outbound
+connection has the task ID match the source ID.
 
 
 ## List all Tasks

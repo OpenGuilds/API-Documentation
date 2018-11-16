@@ -8,7 +8,7 @@
   "object": "Member",
   "id": "1",
   "email": "email@example.com",
-  "quality_score": "0.86",
+  "quality_score": 0.86,
   "credit": "$5.00",
   "credit_cents": 500,
   "created": "2015-05-22T14:56:29.000Z",
@@ -16,9 +16,9 @@
 }
 ```
 
-Members are individuals in a [Guilds](#the-guild-object) community.
-Members can get qualifications, subscribe to [Tasks](#the-task-object) 
-and perform work for a [Guild](#the-guild-object).
+Members are individuals in a [guilds](#the-guild-object) community.
+Members can get qualifications, subscribe to [tasks](#the-task-object) 
+and perform work for a guild.
 
 Members are rewarded for their correct work with guild credits.
 Members can request a payout from a guild which is then authorized by the guild owner.
@@ -28,16 +28,16 @@ specific questions according to a golden set of answers.
 
 The object has the following attributes:
 
-Attribute | Description
---------- | -----------
-object | The object being described by the incoming data, in this case a Guild.
-id | The ID of the batch being returned.
-email | The email of the Member.
-quality_score | A score between 0.00 and 1.00 which determines the members test accuracy.
-credit | The total available credit a user has to request a payout with expressed in humanized money form with currency symbol.
-credit_cents | The total available credit a user has to request a payout expressed in the number of cents.
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | The object being described by the incoming data, in this case a Guild.
+id | string | The ID of the batch being returned.
+email | string | The email of the Member.
+quality_score | float | A score between 0.00 and 1.00 which determines the members test accuracy.
+credit | string | The total available credit a user has to request a payout.
+credit_cents | integer | The total available credit a user has to request a payout expressed in the number of cents.
 
-## Get all Members
+## List all Members
 ```ruby
 require 'open-guilds'
 
@@ -47,7 +47,7 @@ guild.members
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds/<GUILD_ID>/members
+curl "https://openguilds.com/api/guilds/<GUILD_ID>/members"
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -58,12 +58,13 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/members
   "object": "List",
   "url": "/api/guilds/1/members",
   "has_more": "false",
+  "page": 1,
   "data": [
     {
       "object": "Member",
       "id": "1",
       "email": "email@example.com",
-      "quality_score": "0.86",
+      "quality_score": 0.86,
       "credit": "$5.00",
       "credit_cents": 500,
       "created": "2015-05-22T14:56:29.000Z",
@@ -86,6 +87,11 @@ GUILD_ID | The ID of the guild you want to view the membership of
 
 
 ## Get a Member
+
+Members can be found by either sending a GET request to the guild members URL,
+or by finding them by their email attribute.
+
+
 ```ruby
 require 'open-guilds'
 
@@ -107,7 +113,7 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/members/find"
   "object": "Member",
   "id": "1",
   "email": "email@example.com",
-  "quality_score": "0.86",
+  "quality_score": 0.86,
   "credit": "$5.00",
   "credit_cents": 500,
   "created": "2015-05-22T14:56:29.000Z",
@@ -120,16 +126,31 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/members/find"
 
 `GET http://openguilds.com/api/guild/<GUILD_ID>/members/find`
 
+OR
+
+`GET http://openguilds.com/api/guild/<GUILD_ID>/members/<ID>`
+
+
+### POST Parameters
+Parameter | Description
+--------- | -----------
+email | The email of the member you wish to find
+
+
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-GUILD_ID | The ID of the guild the membership is for
-email | The email of the member you wish to find
+GUILD_ID | The ID of the guild the membership is for.
+ID | The ID of the member you are looking for.
 
 
 
 ## Invite a new Member
+
+Inviting a member will send them an invitation via email with a link they can
+click to accept.
+
 ```ruby
 require 'open-guilds'
 
@@ -170,6 +191,10 @@ GUILD_ID | The ID of the guild the invite is for
 
 
 ## Remove a Member
+
+Removing a member will destroy their active membership to the guild, but
+maintain all their records of work.
+
 ```ruby
 require 'open-guilds'
 
