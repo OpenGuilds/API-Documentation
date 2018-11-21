@@ -119,11 +119,13 @@ initial task as well as the destinations for the data when it is completed.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-guild = api.guilds.get(1)
-guild.batches.create!(
-  data: File.open('path/to/data.json')
+file = File.read('path/to/data.json')
+
+OpenGuilds::Batch.create(
+  guild: 1,
+  params: JSON.parse(file)
 )
 ```
 
@@ -170,7 +172,7 @@ curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
   "status": "processing",
   "data": [
     {
-      "object": "datum",
+      "object": "Datum",
       "id": "1",
       "status": "processing",
       "parameters": {
@@ -178,7 +180,7 @@ curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
       }
     },
     {
-      "object": "datum",
+      "object": "Datum",
       "id": "2",
       "status": "processing",
       "parameters": {
@@ -186,7 +188,7 @@ curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
       }
     },
     {
-      "object": "datum",
+      "object": "Datum",
       "id": "3",
       "status": "processing",
       "parameters": {
@@ -196,7 +198,7 @@ curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
   ],
   "webhooks": [
     {
-      "object": "webhook",
+      "object": "Webhook",
       "id": "1",
       "destination": "https://your.service.com"
     }
@@ -208,7 +210,7 @@ curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
 
 ### HTTP Request
 
-`POST http://openguilds.com/api/<GUILD_ID>/batches`
+`POST http://openguilds.com/api/guilds/<GUILD_ID>/batches`
 
 ### Batch Parameters
 
@@ -229,9 +231,9 @@ GUILD_ID | The ID of the guild the batch should be for.
 ## List all Batches
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.batches.get
+OpenGuilds::Batch.list()
 ```
 
 ```shell
@@ -253,9 +255,24 @@ curl "https://openguilds.com/api/guilds"
       "id": "1",
       "data_count": 3,
       "data_completed_count": 0,
-      "data": [ ... ],
-      "webhooks": [ ... ],
       "status": "processing",
+      "data": [
+        {
+          "object": "Datum",
+          "id": "1",
+          "status": "processing",
+          "parameters": {
+            "image_url": "www.images.com/image1.png"
+          }
+        },
+      ],
+      "webhooks": [
+        {
+          "object": "Webhook",
+          "id": "1",
+          "destination": "https://your.service.com"
+        }
+      ],
       "created": "2015-05-22T14:56:29.000Z",
       "updated": "2015-05-22T14:56:28.000Z"
     }
@@ -273,9 +290,9 @@ This will retrieve all batches for the authorized user.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.batches.get(1)
+OpenGuilds::Batch.get(1)
 ```
 
 ```shell
@@ -292,8 +309,23 @@ curl "https://openguilds.com/api/batches/1"
   "data_count": 3,
   "data_completed_count": 0,
   "status": "processing",
-  "data": [ ... ],
-  "webhooks": [ ... ],
+  "data": [
+    {
+      "object": "Datum",
+      "id": "1",
+      "status": "processing",
+      "parameters": {
+        "image_url": "www.images.com/image1.png"
+      }
+    },
+  ],
+  "webhooks": [
+    {
+      "object": "Webhook",
+      "id": "1",
+      "destination": "https://your.service.com"
+    }
+  ],
   "created": "2015-05-22T14:56:29.000Z",
   "updated": "2015-05-22T14:56:28.000Z"
 }
@@ -312,9 +344,9 @@ ID | The ID of the batch to retrieve
 ## Cancel a Specific Batch
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.batches.delete(1)
+OpenGuilds::Batch.cancel(1)
 ```
 
 ```shell
@@ -352,9 +384,9 @@ ID | The ID of the batch to cancel
 ## Pay for a Batch
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.batches.pay(1)
+OpenGuilds::Batch.pay(1)
 ```
 
 ```shell

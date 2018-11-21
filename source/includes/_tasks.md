@@ -11,17 +11,17 @@
   "minimum_amount_cents": 500,
   "workspace": {
     "name": "Audio Transcription Interface",
-    "link": "api/workspaces/1"
+    "link": "api/workspaces/1",
     "preview": "https://preview.interface.com",
     "permissions": "open"
   },
   "connections": [
     {
-      "object": "Connection"
+      "object": "Connection",
       "source": "1",
       "target": "2"
     }
-  ]
+  ],
   "created": "2015-05-22T14:56:29.000Z",
   "updated": "2015-05-22T14:56:28.000Z"
 }
@@ -68,10 +68,10 @@ connection has the task ID match the source ID.
 ## List all Tasks
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-guild = api.guilds.get(1)
-guild.tasks
+#The guild ID is passed in as the first argument
+OpenGuilds::Tasks.list(1)
 ```
 
 ```shell
@@ -92,8 +92,19 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/tasks
       "id": "1",
       "minimum_amount": "$5.00",
       "minimum_amount_cents": 500,
-      "workspace": { ... },
-      "connections": [ ... ],
+      "workspace": {
+        "name": "Audio Transcription Interface",
+        "link": "api/workspaces/1",
+        "preview": "https://preview.interface.com",
+        "permissions": "open"
+      },
+      "connections": [
+        {
+          "object": "Connection",
+          "source": "1",
+          "target": "2"
+        }
+      ],
       "created": "2015-05-22T14:56:29.000Z",
       "updated": "2015-05-22T14:56:28.000Z"
     }
@@ -104,7 +115,7 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/tasks
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/guild/<GUILD_ID>/tasks`
+`GET http://openguilds.com/api/guilds/<GUILD_ID>/tasks`
 
 ### URL Parameters
 
@@ -116,14 +127,13 @@ GUILD_ID | The ID of the guild you want to view the tasks of
 ## Get a Task
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-guild = api.guilds.get(1)
-guild.tasks.get(1)
+OpenGuilds::Task.get(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds/<GUILD_ID>/tasks/<ID>"
+curl "https://openguilds.com/api/tasks/<ID>"
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -135,8 +145,19 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/tasks/<ID>"
   "id": "1",
   "minimum_amount": "$5.00",
   "minimum_amount_cents": 500,
-  "workspace": { ... },
-  "connections": [ ... ],
+  "workspace": {
+    "name": "Audio Transcription Interface",
+    "link": "api/workspaces/1",
+    "preview": "https://preview.interface.com",
+    "permissions": "open"
+  },
+  "connections": [
+    {
+      "object": "Connection",
+      "source": "1",
+      "target": "2"
+    }
+  ],
   "created": "2015-05-22T14:56:29.000Z",
   "updated": "2015-05-22T14:56:28.000Z"
 }
@@ -144,11 +165,10 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/tasks/<ID>"
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/guild/<GUILD_ID>/tasks/<ID>`
+`GET http://openguilds.com/api/tasks/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-GUILD_ID | The ID of the guild the task is from
 ID | The ID of the task

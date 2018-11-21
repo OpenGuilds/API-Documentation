@@ -34,9 +34,9 @@ Will return all guilds which an authorized user owns.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.guilds.list
+OpenGuilds::Guild.list
 ```
 
 ```shell
@@ -79,9 +79,9 @@ ID | The ID of the guild to retrieve
 ## Get a Guild
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.guilds.get(1)
+OpenGuilds::Guild.get(1)
 ```
 
 ```shell

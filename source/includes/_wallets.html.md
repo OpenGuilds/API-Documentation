@@ -80,14 +80,13 @@ Will return all wallets belonging to the user.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-wallets = api.wallets
-
+OpenGuilds::Wallet.list()
 ```
 
 ```shell
-curl "https://openguilds.com/api/wallets
+curl "https://openguilds.com/api/wallets"
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -96,14 +95,24 @@ curl "https://openguilds.com/api/wallets
 ```json
 {
   "object": "List",
-  "url": "/api/wallets"
+  "url": "/api/wallets",
   "has_more": "false",
   "page": 1,
   "data": [
     {
       "object": "Wallet",
       "id": "2",
-      "transactions": [...],
+      "transactions": [
+        {
+          "object": "Transaction",
+          "id": "1",
+          "type": "Guild Credit",
+          "amount": "$5.00",
+          "amount_cents": 500,
+          "created": "2015-05-22T14:56:29.000Z",
+          "updated": "2015-05-22T14:56:28.000Z"
+        }
+      ],
       "balance": "$20.00",
       "balance_cents": 2000,
       "created": "2015-05-22T14:56:29.000Z",
@@ -125,9 +134,9 @@ Will return a wallet object belonging to the authenticated user.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.wallet.get(1)
+OpenGuilds::Wallet.get(1)
 ```
 
 ```shell
@@ -141,7 +150,17 @@ curl "https://openguilds.com/api/wallet/<ID>"
 {
   "object": "Wallet",
   "id": "2",
-  "transactions": [...],
+  "transactions": [
+    {
+      "object": "Transaction",
+      "id": "1",
+      "type": "Guild Credit",
+      "amount": "$5.00",
+      "amount_cents": 500,
+      "created": "2015-05-22T14:56:29.000Z",
+      "updated": "2015-05-22T14:56:28.000Z"
+    }
+  ],
   "balance": "$20.00",
   "balance_cents": 2000,
   "created": "2015-05-22T14:56:29.000Z",

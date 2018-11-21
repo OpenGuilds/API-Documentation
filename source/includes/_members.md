@@ -40,10 +40,10 @@ credit_cents | integer | The total available credit a user has to request a payo
 ## List all Members
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-guild = api.guilds.get(1)
-guild.members
+#The ID for the guild is passed in as the first argument.
+OpenGuilds::Member.list(1)
 ```
 
 ```shell
@@ -94,10 +94,9 @@ or by finding them by their email attribute.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-guild = api.guilds.get(1)
-guild.members.find('email@example.com')
+OpenGuilds::Member.find(guild: 1, email: 'email@example.com')
 ```
 
 ```shell
@@ -153,10 +152,9 @@ click to accept.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-guild = api.guilds.get(1)
-guild.members.invite('email@example.com')
+OpenGuilds::Member.invite(guild: 1, email: 'email@example.com')
 ```
 
 ```shell
@@ -183,6 +181,12 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/invites"
 
 `GET http://openguilds.com/api/guild/<GUILD_ID>/invites`
 
+### Request Parameters
+Parameter | Description
+--------- | -----------
+email | The email of the new member
+
+
 ### URL Parameters
 
 Parameter | Description
@@ -197,11 +201,9 @@ maintain all their records of work.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-guild = api.guilds.get(1)
-member = guild.members.find('email@example.com')
-member.remove
+OpenGuilds::Member.remove(1)
 ```
 
 ```shell
@@ -216,14 +218,14 @@ curl "https://openguilds.com/api/guilds/<GUILD_ID>/members/<ID>"
 {
   "object": "Member",
   "id": "1",
-  "deleted": "true",
+  "deleted": true
 }
 
 ```
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/guild/<GUILD_ID>/members<ID>`
+`GET http://openguilds.com/api/guild/<GUILD_ID>/members/<ID>`
 
 ### URL Parameters
 

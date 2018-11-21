@@ -5,8 +5,7 @@
 
 ```ruby
 require 'open-guilds'
-
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 ```
 
 ```shell

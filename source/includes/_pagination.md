@@ -39,9 +39,9 @@ data | array(objects) | An array of requested objects.
 
 ```ruby
 require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
-api = OpenGuilds::Client.authorize!('8641fb38-294a-41d9-9591-3449dfd99910')
-api.guilds.list(limit: 10)
+OpenGuilds::Guild.list(limit: 10)
 ```
 
 ```shell
