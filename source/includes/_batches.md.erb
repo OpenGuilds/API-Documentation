@@ -13,7 +13,7 @@ to a [guild](#the-guild-object).
 Batches can have many webhooks. Webhooks will send the
 data from a batch to its endpoint when the batch status changes to completed.
 
-Batches must be funded before they are given to guild 
+Batches are funded by the guild before they are given to guild 
 [members](#the-member-object) to work on.
 
 Batches are accounted for by a guild's [bank](#the-bank-object)
@@ -219,7 +219,7 @@ curl <%= api_endpoint + "/api/batches/<ID>" %>
 
 ### HTTP Request
 
-`GET http://example.com/batches/<ID>`
+`GET <%= api_endpoint + "/api/batches/<ID>" %>`
 
 ### URL Parameters
 
@@ -251,10 +251,8 @@ curl <%= api_endpoint + "/api/batches/<ID>" %>
 }
 ```
 
-Canceling a batch is made with a delete request. We delete the contents of the
-batch but keep a record of it being canceled.
-
-Refunds will be given for data that have not yet been accepted by [members](#the-member-object).
+Canceling a batch is made with a delete request.
+We delete the contents of the batch but keep a record of it being canceled.
 
 ### HTTP Request
 

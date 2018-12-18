@@ -10,7 +10,7 @@ OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl "https://dashboard.openguilds.com/api/users/authenticate"
+curl <%= api_endpoint + "/api/users/authenticate" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 
 # If you need to authenticate via bearer auth 
