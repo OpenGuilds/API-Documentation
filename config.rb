@@ -1,5 +1,16 @@
 # Unique header generation
 require './lib/unique_head.rb'
+require 'lib/wallet.rb'
+require 'lib/batch.rb'
+require 'lib/guild.rb'
+require 'lib/member.rb'
+require 'lib/task.rb'
+
+helpers WalletHelper
+helpers BatchHelper
+helpers GuildHelper
+helpers MemberHelper
+helpers TaskHelper
 
 # Markdown
 set :markdown_engine, :redcarpet
@@ -19,6 +30,7 @@ set :css_dir, 'stylesheets'
 set :js_dir, 'javascripts'
 set :images_dir, 'images'
 set :fonts_dir, 'fonts'
+
 
 # Activate the syntax highlighter
 activate :syntax
@@ -55,4 +67,18 @@ set :port, 4567
 
 helpers do
   require './lib/toc_data.rb'
+
+  def api_endpoint
+    'https://dashboard.openguilds.com'
+  end
+
+  def list_for(object, path)
+    {
+      object:  "List",
+      url: path,
+      has_more: false,
+      page: 1,
+      data: object
+    }
+  end
 end

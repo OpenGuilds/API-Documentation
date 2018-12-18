@@ -5,13 +5,7 @@
 > The list object looks like this:
 
 ```json
-{
-  "object": "List",
-  "url": "/api/batches",
-  "has_more": false,
-  "page": 1,
-  "data": [ ... ]
-}
+<%= JSON.pretty_generate(list_for("[ ... ]", "/api/batches")) %>
 ```
 
 
@@ -31,7 +25,7 @@ object | string | A string for the objects type.
 url | string | the url for a successive request.
 has_more | boolean | A true or false value based on if there is another page.
 page | integer | The current page number.
-data | array(objects) | An array of requested objects.
+data | array[objects] | An array of requested objects.
 
 ## Options
 
@@ -45,7 +39,7 @@ OpenGuilds::Guild.list(limit: 10)
 ```
 
 ```shell
-curl "https://dashboard.openguilds.com/api/guilds/<ID>?limit=10"
+curl <%= "#{api_endpoint}/api/guilds/<ID>?limit=10" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -G
 ```
@@ -56,4 +50,4 @@ List requests takes 2 additional parameters:
 Parameter | Description
 --------- | -----------
 limit | A limit on the number of objects to be returned, between 1 and 100.
-page | The page number, each page represents 100 records.
+page | The page number, each page represents 100 records or your requested limit.

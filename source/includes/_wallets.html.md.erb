@@ -5,21 +5,16 @@
 > The Wallet object looks like this:
 
 ```json
-{
-  "object": "Wallet",
-  "id": "2",
-  "transactions": [...],
-  "balance": "$20.00",
-  "balance_cents": 2000,
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(wallet) %>
 ```
 
-Each [guild](#the-guild-object) you join has its own individual Wallet.
+Each [guild](#the-guild-object) you join has its own individual wallet.
 
 Wallets store a history of [transactions](#the-transaction-object), 
 which can be different types.
+
+Wallets are backed by a [bank](#the-bank-object) which the owner is responsible
+for for fulfilling.
 
 Wallet credits can be exchanged by workers by requesting a payout.
 
@@ -33,23 +28,36 @@ transactions | array[transactions] | A time ordered history of Transactions, wit
 balance | string | The total amount of Credits from adding all Credits minus Debits.
 balance_cents | integer | The balance represented in cents.
 
+
+## The Bank Object
+
+A bank is has a wallet that is owned by the guild called the vault.
+
+The bank records all transactions made in and out of associated wallets.
+
+Users can place requests for a payout of their credits, which are accepted
+by the guild owner.
+
 ## The Transaction Object
 
-> The Transaction object looks like this:
+> The transaction object looks like this:
 
 ```json
-{
-  "object": "Transaction",
-  "id": "1",
-  "type": "Guild Credit",
-  "amount": "$5.00",
-  "amount_cents": 500,
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(transaction) %>
 ```
 
+> A variation, called a time transaction object looks like this:
+
+```json
+<%= JSON.pretty_generate(time_transaction) %>
+```
+
+
 Transactions are created when paying for something, or exchanging credits.
+
+Time transactions are extensions of transactions which record the time worked
+which is then converted to the real amount. It can be useful for following
+fiscal rules such as paying workers hourly.
 
 A Transaction has the following attributes:
 
@@ -67,11 +75,12 @@ Type | Description
 ---- | -----------
 Guild Credit | A positive transfer of guild currency.
 Guild Debit | A negative transfer of guild currency.
+Guild Time Credit | A positive transfer of guild time.
+Guild Time Debit | A negative transfer of guild time.
 Amazon Credit | A positive transfer of Amazon credits.
 Amazon Debit | A negative transfer of Amazon credits.
 Fiat Credit | A positive transfer of fiat money.
 Fiat Debit | A negative transfer of fiat money.
-
 
 
 ## List all Wallets
@@ -86,46 +95,19 @@ OpenGuilds::Wallet.list()
 ```
 
 ```shell
-curl "https://openguilds.com/api/wallets"
+curl <%= api_endpoint + "/api/wallets" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "List",
-  "url": "/api/wallets",
-  "has_more": "false",
-  "page": 1,
-  "data": [
-    {
-      "object": "Wallet",
-      "id": "2",
-      "transactions": [
-        {
-          "object": "Transaction",
-          "id": "1",
-          "type": "Guild Credit",
-          "amount": "$5.00",
-          "amount_cents": 500,
-          "created": "2015-05-22T14:56:29.000Z",
-          "updated": "2015-05-22T14:56:28.000Z"
-        }
-      ],
-      "balance": "$20.00",
-      "balance_cents": 2000,
-      "created": "2015-05-22T14:56:29.000Z",
-      "updated": "2015-05-22T14:56:28.000Z"
-    }
-  ]
-}
-
+<%= JSON.pretty_generate(list_for([wallet], 'api/wallets/2/transactions' )) %>
 ```
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/wallets`
+`GET <%= api_endpoint + "/api/wallets" %>`
 
 
 ## Get a Wallet
@@ -140,37 +122,19 @@ OpenGuilds::Wallet.get(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/wallet/<ID>"
+curl <%= api_endpoint + "/api/wallet/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
 > Which should return your Wallet:
 
 ```json
-{
-  "object": "Wallet",
-  "id": "2",
-  "transactions": [
-    {
-      "object": "Transaction",
-      "id": "1",
-      "type": "Guild Credit",
-      "amount": "$5.00",
-      "amount_cents": 500,
-      "created": "2015-05-22T14:56:29.000Z",
-      "updated": "2015-05-22T14:56:28.000Z"
-    }
-  ],
-  "balance": "$20.00",
-  "balance_cents": 2000,
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(wallet) %>
 ```
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/wallet/<ID>`
+`GET <%= api_endpoint + "/api/wallet/<ID>" %>`
 
 ### URL Parameters
 

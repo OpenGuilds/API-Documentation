@@ -4,27 +4,7 @@
 > The Task object looks like this:
 
 ```json
-{
-  "object": "Task",
-  "id": "1",
-  "minimum_amount": "$5.00",
-  "minimum_amount_cents": 500,
-  "workspace": {
-    "name": "Audio Transcription Interface",
-    "link": "api/workspaces/1",
-    "preview": "https://preview.interface.com",
-    "permissions": "open"
-  },
-  "connections": [
-    {
-      "object": "Connection",
-      "source": "1",
-      "target": "2"
-    }
-  ],
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(task) %>
 ```
 
 [Guilds](#the-guild-object) have a series of tasks they perform on each piece of data.
@@ -75,47 +55,19 @@ OpenGuilds::Tasks.list(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds/<GUILD_ID>/tasks
+curl <%= api_endpoint + "/api/guilds/<GUILD_ID>/tasks" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "List",
-  "url": "/api/guilds/1/tasks",
-  "has_more": "false",
-  "data": [
-    {
-      "object": "Task",
-      "id": "1",
-      "minimum_amount": "$5.00",
-      "minimum_amount_cents": 500,
-      "workspace": {
-        "name": "Audio Transcription Interface",
-        "link": "api/workspaces/1",
-        "preview": "https://preview.interface.com",
-        "permissions": "open"
-      },
-      "connections": [
-        {
-          "object": "Connection",
-          "source": "1",
-          "target": "2"
-        }
-      ],
-      "created": "2015-05-22T14:56:29.000Z",
-      "updated": "2015-05-22T14:56:28.000Z"
-    }
-  ]
-}
-
+<%= JSON.pretty_generate(list_for([task], '/api/guilds/<GUILD_ID>/tasks')) %>
 ```
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/guilds/<GUILD_ID>/tasks`
+`GET <%= api_endpoint + "/api/guilds/<GUILD_ID>/tasks" %>`
 
 ### URL Parameters
 
@@ -133,39 +85,19 @@ OpenGuilds::Task.get(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/tasks/<ID>"
+curl <%= api_endpoint + "/api/tasks/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "Task",
-  "id": "1",
-  "minimum_amount": "$5.00",
-  "minimum_amount_cents": 500,
-  "workspace": {
-    "name": "Audio Transcription Interface",
-    "link": "api/workspaces/1",
-    "preview": "https://preview.interface.com",
-    "permissions": "open"
-  },
-  "connections": [
-    {
-      "object": "Connection",
-      "source": "1",
-      "target": "2"
-    }
-  ],
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(task) %>
 ```
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/tasks/<ID>`
+`GET <%= api_endpoint + "/api/tasks/<ID>" %>`
 
 ### URL Parameters
 

@@ -1,0 +1,81 @@
+# Guilds
+
+## The Guild Object
+> The Guild object looks like this:
+
+```json
+<%= JSON.pretty_generate(guild) %>
+```
+
+Guilds are online organizations with a community 
+of [members](#the-member-object).
+
+Guilds are made up of many [tasks](#the-task-object) where 
+[members](#the-member-object) process data by modifying it
+through [workspaces](#the-workspace-object).
+
+The object has the following attributes:
+
+Attribute | Description
+--------- | -----------
+object | A string representing the object type.
+id | The ID of the batch being returned.
+name | The name of the guild.
+description | A description of the guild.
+
+## List all Guilds
+
+Will return all guilds which an authorized user owns.
+
+```ruby
+require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
+
+OpenGuilds::Guild.list
+```
+
+```shell
+curl <%= api_endpoint + "/api/guilds" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+<%= JSON.pretty_generate(list_for([guild], 'api/guilds')) %>
+```
+
+### HTTP Request
+
+`GET <%= api_endpoint + "/api/guilds" %>`
+
+## Get a Guild
+```ruby
+require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
+
+OpenGuilds::Guild.get(1)
+```
+
+```shell
+curl <%= api_endpoint + "/api/guilds/<ID>" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+<%= JSON.pretty_generate(guild) %>
+```
+
+### HTTP Request
+
+`GET <%= api_endpoint + "/api/guilds/<ID>" %>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the guild to retrieve
+
+

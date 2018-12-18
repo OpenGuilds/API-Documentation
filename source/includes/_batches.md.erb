@@ -4,33 +4,7 @@
 > The Batch object looks like this:
 
 ```json
-{
-  "object": "Batch",
-  "id": "1",
-  "data_completed_count": "0",
-  "data_count": "1"
-  "data": [
-    {
-      "object": "datum",
-      "id": "1",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image1.png"
-      }
-    },
-  ],
-  "webhooks": [
-    {
-      "object": "webhook",
-      "id": "1",
-      "destination": "https://your.service.com"
-    }
-  ],
-  "completed": "false",
-  "status": "processing",
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(batch) %>
 ```
 
 Batches are created when you send [data](#the-datum-object)
@@ -39,11 +13,10 @@ to a [guild](#the-guild-object).
 Batches can have many webhooks. Webhooks will send the
 data from a batch to its endpoint when the batch status changes to completed.
 
-Batches must be funded before they are given to guild 
+Batches are funded by the guild before they are given to guild 
 [members](#the-member-object) to work on.
 
-Funding a batch will allow workers to claim work from [tasks](#the-task-object)
-they are subscribed to, which will add transformations to the data of the batch.
+Batches are accounted for by a guild's [bank](#the-bank-object)
 
 
 The object has the following attributes:
@@ -62,12 +35,18 @@ The status of a batch object can be one of the following:
 
 Status | Description
 ------ | -----------
-unpaid | The batch as not yet been funded.
 processing | Not all data in the batch has been completed.
 completed | All data in the batch has been processed and marked as complete.
+archived | The data has been archived and removed from normal listing.
 
 
 ## The Datum Object
+
+> The datum object looks like this:
+
+```json
+<%= JSON.pretty_generate(datum) %>
+```
 
 The singular word for data is called a datum.
 
@@ -94,6 +73,12 @@ processing | The data has not been processed by all required tasks.
 completed | The data has been processed by all required tasks.
 
 ## The Webhook Object
+
+> The webhook object looks like this:
+
+```json
+<%= JSON.pretty_generate(webhook) %>
+```
 
 A webhook is triggered when a batch object is completed.
 
@@ -130,7 +115,7 @@ OpenGuilds::Batch.create(
 ```
 
 ```shell
-curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
+curl <%= api_endpoint + "/api/guild/<GUILD_ID>/batch" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -H "Content-Type: application/json" 
   -d "@data.json"
@@ -164,53 +149,12 @@ curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
 > Which should return your batch:
 
 ```json
-{
-  "object": "Batch",
-  "id": "1",
-  "data_count": 3,
-  "data_completed_count": 0,
-  "status": "processing",
-  "data": [
-    {
-      "object": "Datum",
-      "id": "1",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image1.png"
-      }
-    },
-    {
-      "object": "Datum",
-      "id": "2",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image2.png"
-      }
-    },
-    {
-      "object": "Datum",
-      "id": "3",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image3.png"
-      }
-    }
-  ],
-  "webhooks": [
-    {
-      "object": "Webhook",
-      "id": "1",
-      "destination": "https://your.service.com"
-    }
-  ],
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(batch) %>
 ```
 
 ### HTTP Request
 
-`POST http://openguilds.com/api/guilds/<GUILD_ID>/batches`
+`POST http://dashboard.openguilds.com/api/guilds/<GUILD_ID>/batches`
 
 ### Batch Parameters
 
@@ -237,54 +181,21 @@ OpenGuilds::Batch.list()
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds"
+curl <%= api_endpoint + "/api/guilds" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "List",
-  "url": "/api/batches",
-  "has_more": "false",
-  "page": 1,
-  "data": [
-    {
-      "object": "Batch",
-      "id": "1",
-      "data_count": 3,
-      "data_completed_count": 0,
-      "status": "processing",
-      "data": [
-        {
-          "object": "Datum",
-          "id": "1",
-          "status": "processing",
-          "parameters": {
-            "image_url": "www.images.com/image1.png"
-          }
-        },
-      ],
-      "webhooks": [
-        {
-          "object": "Webhook",
-          "id": "1",
-          "destination": "https://your.service.com"
-        }
-      ],
-      "created": "2015-05-22T14:56:29.000Z",
-      "updated": "2015-05-22T14:56:28.000Z"
-    }
-  ]
-}
+<%= JSON.pretty_generate(list_for([batch], 'api/batches')) %>
 ```
 
 This will retrieve all batches for the authorized user.
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/batches`
+`GET http://dashboard.openguilds.com/api/batches`
 
 ## Get a Specific Batch
 
@@ -296,44 +207,19 @@ OpenGuilds::Batch.get(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/batches/1"
+curl <%= api_endpoint + "/api/batches/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "Batch",
-  "id": "1",
-  "data_count": 3,
-  "data_completed_count": 0,
-  "status": "processing",
-  "data": [
-    {
-      "object": "Datum",
-      "id": "1",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image1.png"
-      }
-    },
-  ],
-  "webhooks": [
-    {
-      "object": "Webhook",
-      "id": "1",
-      "destination": "https://your.service.com"
-    }
-  ],
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(batch) %>
 ```
 
 ### HTTP Request
 
-`GET http://example.com/batches/<ID>`
+`GET <%= api_endpoint + "/api/batches/<ID>" %>`
 
 ### URL Parameters
 
@@ -350,7 +236,7 @@ OpenGuilds::Batch.cancel(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/batches/1"
+curl <%= api_endpoint + "/api/batches/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -X DELETE
 ```
@@ -365,55 +251,15 @@ curl "https://openguilds.com/api/batches/1"
 }
 ```
 
-Canceling a batch is made with a delete request. We delete the contents of the
-batch but keep a record of it being canceled.
-
-Refunds will be given for data that have not yet been accepted by [members](#the-member-object).
+Canceling a batch is made with a delete request.
+We delete the contents of the batch but keep a record of it being canceled.
 
 ### HTTP Request
 
-`DELETE https://openguilds.com/batches/<ID>`
+`DELETE <%= api_endpoint + "/api/batches/<ID>" %>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 ID | The ID of the batch to cancel
-
-
-## Pay for a Batch
-```ruby
-require 'open-guilds'
-OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
-
-OpenGuilds::Batch.pay(1)
-```
-
-```shell
-curl "https://openguilds.com/api/batches/<ID>/debits"
-  -u "8641fb38-294a-41d9-9591-3449dfd99910"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "object": "Transaction",
-  "id": 2,
-  "type": "Guild Debit",
-  "amount" : "$2.00",
-  "amount_cents": 200,
-}
-```
-
-You can pay for a Batch by creating a guild debit [transaction](#the-transaction-object).
-
-### HTTP Request
-
-`POST http://openguilds.com/api/batches/<ID>/debits`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the Batch to retrieve
