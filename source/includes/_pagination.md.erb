@@ -5,13 +5,7 @@
 > The list object looks like this:
 
 ```json
-{
-  "object": "List",
-  "url": "/api/batches",
-  "has_more": false,
-  "page": 1,
-  "data": [ ... ]
-}
+<%= JSON.pretty_generate(list_for("[ ... ]", "/api/batches")) %>
 ```
 
 

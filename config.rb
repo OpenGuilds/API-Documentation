@@ -1,5 +1,7 @@
 # Unique header generation
 require './lib/unique_head.rb'
+require 'lib/wallet.rb'
+helpers WalletHelper
 
 # Markdown
 set :markdown_engine, :redcarpet
@@ -59,5 +61,15 @@ helpers do
 
   def api_endpoint
     'https://dashboard.openguilds.com'
+  end
+
+  def list_for(object, path)
+    {
+      object:  "List",
+      url: path,
+      has_more: false,
+      page: 1,
+      data: object
+    }
   end
 end
