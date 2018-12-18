@@ -4,11 +4,13 @@ require 'lib/wallet.rb'
 require 'lib/batch.rb'
 require 'lib/guild.rb'
 require 'lib/member.rb'
+require 'lib/task.rb'
 
 helpers WalletHelper
 helpers BatchHelper
 helpers GuildHelper
 helpers MemberHelper
+helpers TaskHelper
 
 # Markdown
 set :markdown_engine, :redcarpet
