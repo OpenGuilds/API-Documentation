@@ -42,7 +42,7 @@ curl <%= api_endpoint + "/api/guilds" %>
 > The above command returns JSON structured like this:
 
 ```json
-<%= JSON.pretty_generate(list_for(guild, 'api/guilds')) %>
+<%= JSON.pretty_generate(list_for([guild], 'api/guilds')) %>
 ```
 
 ### HTTP Request

@@ -188,7 +188,7 @@ curl <%= api_endpoint + "/api/guilds" %>
 > The above command returns JSON structured like this:
 
 ```json
-<%= JSON.pretty_generate(list_for(batch, 'api/batches')) %>
+<%= JSON.pretty_generate(list_for([batch], 'api/batches')) %>
 ```
 
 This will retrieve all batches for the authorized user.
@@ -258,7 +258,7 @@ Refunds will be given for data that have not yet been accepted by [members](#the
 
 ### HTTP Request
 
-`DELETE https://openguilds.com/batches/<ID>`
+`DELETE <%= api_endpoint + "/api/batches/<ID>" %>`
 
 ### URL Parameters
 

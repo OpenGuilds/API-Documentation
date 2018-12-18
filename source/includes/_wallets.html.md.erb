@@ -102,7 +102,7 @@ curl <%= api_endpoint + "/api/wallets" %>
 > The above command returns JSON structured like this:
 
 ```json
-<%= JSON.pretty_generate(list_for(wallet, 'api/wallets/2/transactions' )) %>
+<%= JSON.pretty_generate(list_for([wallet], 'api/wallets/2/transactions' )) %>
 ```
 
 ### HTTP Request
