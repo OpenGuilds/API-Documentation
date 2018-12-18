@@ -2,9 +2,11 @@
 require './lib/unique_head.rb'
 require 'lib/wallet.rb'
 require 'lib/batch.rb'
+require 'lib/guild.rb'
 
 helpers WalletHelper
 helpers BatchHelper
+helpers GuildHelper
 
 # Markdown
 set :markdown_engine, :redcarpet

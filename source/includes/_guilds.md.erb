@@ -4,19 +4,14 @@
 > The Guild object looks like this:
 
 ```json
-{
-  "object": "Guild",
-  "id": "1",
-  "name": "Audio Transcription",
-  "description": "This guild takes an audio file and returns a text transcription",
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(guild) %>
 ```
 
-Guilds are online organizations with a community of [members](#the-member-object).
+Guilds are online organizations with a community 
+of [members](#the-member-object).
 
-Guilds are made up of many [tasks](#the-task-object) where [members](#the-member-object) process data by modifying it
+Guilds are made up of many [tasks](#the-task-object) where 
+[members](#the-member-object) process data by modifying it
 through [workspaces](#the-workspace-object).
 
 The object has the following attributes:
@@ -40,41 +35,19 @@ OpenGuilds::Guild.list
 ```
 
 ```shell
-curl <%= api_endpoint + "/api/guilds/<ID>" %>
+curl <%= api_endpoint + "/api/guilds" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "List",
-  "url": "/api/guilds",
-  "has_more": "false",
-  "page": 1,
-  "data": [
-    {
-      "object": "Guild",
-      "id": "1",
-      "name": "Audio Transcription",
-      "description": "This guild takes an audio file and returns a text transcription",
-      "created": "2015-05-22T14:56:29.000Z",
-      "updated": "2015-05-22T14:56:28.000Z"
-    }
-  ]
-}
-
+<%= JSON.pretty_generate(list_for(guild, 'api/guilds')) %>
 ```
 
 ### HTTP Request
 
-`GET http://dashboard.openguilds.com/api/guilds`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the guild to retrieve
+`GET <%= api_endpoint + "/api/guilds" %>`
 
 ## Get a Guild
 ```ruby
@@ -92,20 +65,12 @@ curl <%= api_endpoint + "/api/guilds/<ID>" %>
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "Guild",
-  "id": "1",
-  "name": "Audio Transcription",
-  "description": "This guild takes an audio file and returns a text transcription",
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
-
+<%= JSON.pretty_generate(guild) %>
 ```
 
 ### HTTP Request
 
-`GET http://dashboard.openguilds.com/api/guilds/<ID>`
+`GET <%= api_endpoint + "/api/guilds/<ID>" %>`
 
 ### URL Parameters
 
