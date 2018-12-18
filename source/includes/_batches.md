@@ -42,8 +42,7 @@ data from a batch to its endpoint when the batch status changes to completed.
 Batches must be funded before they are given to guild 
 [members](#the-member-object) to work on.
 
-Funding a batch will allow workers to claim work from [tasks](#the-task-object)
-they are subscribed to, which will add transformations to the data of the batch.
+Batches are accounted for by a guild's [bank](#the-bank-object)
 
 
 The object has the following attributes:
@@ -62,9 +61,9 @@ The status of a batch object can be one of the following:
 
 Status | Description
 ------ | -----------
-unpaid | The batch as not yet been funded.
 processing | Not all data in the batch has been completed.
 completed | All data in the batch has been processed and marked as complete.
+archived | The data has been archived and removed from normal listing.
 
 
 ## The Datum Object
@@ -379,41 +378,3 @@ Refunds will be given for data that have not yet been accepted by [members](#the
 Parameter | Description
 --------- | -----------
 ID | The ID of the batch to cancel
-
-
-## Pay for a Batch
-```ruby
-require 'open-guilds'
-OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
-
-OpenGuilds::Batch.pay(1)
-```
-
-```shell
-curl "https://openguilds.com/api/batches/<ID>/debits"
-  -u "8641fb38-294a-41d9-9591-3449dfd99910"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "object": "Transaction",
-  "id": 2,
-  "type": "Guild Debit",
-  "amount" : "$2.00",
-  "amount_cents": 200,
-}
-```
-
-You can pay for a Batch by creating a guild debit [transaction](#the-transaction-object).
-
-### HTTP Request
-
-`POST http://openguilds.com/api/batches/<ID>/debits`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the Batch to retrieve
