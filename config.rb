@@ -1,7 +1,10 @@
 # Unique header generation
 require './lib/unique_head.rb'
 require 'lib/wallet.rb'
+require 'lib/batch.rb'
+
 helpers WalletHelper
+helpers BatchHelper
 
 # Markdown
 set :markdown_engine, :redcarpet

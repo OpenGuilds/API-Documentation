@@ -4,33 +4,7 @@
 > The Batch object looks like this:
 
 ```json
-{
-  "object": "Batch",
-  "id": "1",
-  "data_completed_count": "0",
-  "data_count": "1"
-  "data": [
-    {
-      "object": "datum",
-      "id": "1",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image1.png"
-      }
-    },
-  ],
-  "webhooks": [
-    {
-      "object": "webhook",
-      "id": "1",
-      "destination": "https://your.service.com"
-    }
-  ],
-  "completed": "false",
-  "status": "processing",
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(batch) %>
 ```
 
 Batches are created when you send [data](#the-datum-object)
@@ -68,6 +42,12 @@ archived | The data has been archived and removed from normal listing.
 
 ## The Datum Object
 
+> The datum object looks like this:
+
+```json
+<%= JSON.pretty_generate(datum) %>
+```
+
 The singular word for data is called a datum.
 
 A datum is given to each task and held until workers perform the required work.
@@ -93,6 +73,12 @@ processing | The data has not been processed by all required tasks.
 completed | The data has been processed by all required tasks.
 
 ## The Webhook Object
+
+> The webhook object looks like this:
+
+```json
+<%= JSON.pretty_generate(webhook) %>
+```
 
 A webhook is triggered when a batch object is completed.
 
@@ -163,48 +149,7 @@ curl <%= api_endpoint + "/api/guild/<GUILD_ID>/batch" %>
 > Which should return your batch:
 
 ```json
-{
-  "object": "Batch",
-  "id": "1",
-  "data_count": 3,
-  "data_completed_count": 0,
-  "status": "processing",
-  "data": [
-    {
-      "object": "Datum",
-      "id": "1",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image1.png"
-      }
-    },
-    {
-      "object": "Datum",
-      "id": "2",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image2.png"
-      }
-    },
-    {
-      "object": "Datum",
-      "id": "3",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image3.png"
-      }
-    }
-  ],
-  "webhooks": [
-    {
-      "object": "Webhook",
-      "id": "1",
-      "destination": "https://your.service.com"
-    }
-  ],
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(batch) %>
 ```
 
 ### HTTP Request
@@ -243,40 +188,7 @@ curl <%= api_endpoint + "/api/guilds" %>
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "List",
-  "url": "/api/batches",
-  "has_more": "false",
-  "page": 1,
-  "data": [
-    {
-      "object": "Batch",
-      "id": "1",
-      "data_count": 3,
-      "data_completed_count": 0,
-      "status": "processing",
-      "data": [
-        {
-          "object": "Datum",
-          "id": "1",
-          "status": "processing",
-          "parameters": {
-            "image_url": "www.images.com/image1.png"
-          }
-        },
-      ],
-      "webhooks": [
-        {
-          "object": "Webhook",
-          "id": "1",
-          "destination": "https://your.service.com"
-        }
-      ],
-      "created": "2015-05-22T14:56:29.000Z",
-      "updated": "2015-05-22T14:56:28.000Z"
-    }
-  ]
-}
+<%= JSON.pretty_generate(list_for(batch, 'api/batches')) %>
 ```
 
 This will retrieve all batches for the authorized user.
@@ -302,32 +214,7 @@ curl <%= api_endpoint + "/api/batches/<ID>" %>
 > The above command returns JSON structured like this:
 
 ```json
-{
-  "object": "Batch",
-  "id": "1",
-  "data_count": 3,
-  "data_completed_count": 0,
-  "status": "processing",
-  "data": [
-    {
-      "object": "Datum",
-      "id": "1",
-      "status": "processing",
-      "parameters": {
-        "image_url": "www.images.com/image1.png"
-      }
-    },
-  ],
-  "webhooks": [
-    {
-      "object": "Webhook",
-      "id": "1",
-      "destination": "https://your.service.com"
-    }
-  ],
-  "created": "2015-05-22T14:56:29.000Z",
-  "updated": "2015-05-22T14:56:28.000Z"
-}
+<%= JSON.pretty_generate(batch) %>
 ```
 
 ### HTTP Request
