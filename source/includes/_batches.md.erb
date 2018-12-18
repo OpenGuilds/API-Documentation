@@ -129,7 +129,7 @@ OpenGuilds::Batch.create(
 ```
 
 ```shell
-curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
+curl <%= api_endpoint + "/api/guild/<GUILD_ID>/batch" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -H "Content-Type: application/json" 
   -d "@data.json"
@@ -209,7 +209,7 @@ curl "https://openguilds.com/api/guild/<GUILD_ID>/batch"
 
 ### HTTP Request
 
-`POST http://openguilds.com/api/guilds/<GUILD_ID>/batches`
+`POST http://dashboard.openguilds.com/api/guilds/<GUILD_ID>/batches`
 
 ### Batch Parameters
 
@@ -236,7 +236,7 @@ OpenGuilds::Batch.list()
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds"
+curl <%= api_endpoint + "/api/guilds" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -283,7 +283,7 @@ This will retrieve all batches for the authorized user.
 
 ### HTTP Request
 
-`GET http://openguilds.com/api/batches`
+`GET http://dashboard.openguilds.com/api/batches`
 
 ## Get a Specific Batch
 
@@ -295,7 +295,7 @@ OpenGuilds::Batch.get(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/batches/1"
+curl <%= api_endpoint + "/api/batches/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -349,7 +349,7 @@ OpenGuilds::Batch.cancel(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/batches/1"
+curl <%= api_endpoint + "/api/batches/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -X DELETE
 ```

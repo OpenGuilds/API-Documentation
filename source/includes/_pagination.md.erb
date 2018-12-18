@@ -45,7 +45,7 @@ OpenGuilds::Guild.list(limit: 10)
 ```
 
 ```shell
-curl "https://dashboard.openguilds.com/api/guilds/<ID>?limit=10"
+curl <%= api_endpoint + "/api/guilds/<ID>?limit=10" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -G
 ```

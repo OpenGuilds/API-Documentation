@@ -40,7 +40,7 @@ OpenGuilds::Guild.list
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds/<ID>"
+curl <%= api_endpoint + "/api/guilds/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -85,7 +85,7 @@ OpenGuilds::Guild.get(1)
 ```
 
 ```shell
-curl "https://dashboard.openguilds.com/api/guilds/<ID>"
+curl <%= api_endpoint + "/api/guilds/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 

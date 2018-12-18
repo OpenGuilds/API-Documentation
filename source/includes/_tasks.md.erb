@@ -75,7 +75,7 @@ OpenGuilds::Tasks.list(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/guilds/<GUILD_ID>/tasks
+curl <%= api_endpoint + "/api/guilds/<GUILD_ID>/tasks" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 
@@ -133,7 +133,7 @@ OpenGuilds::Task.get(1)
 ```
 
 ```shell
-curl "https://openguilds.com/api/tasks/<ID>"
+curl <%= api_endpoint + "/api/tasks/<ID>" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 ```
 

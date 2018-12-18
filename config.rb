@@ -20,6 +20,7 @@ set :js_dir, 'javascripts'
 set :images_dir, 'images'
 set :fonts_dir, 'fonts'
 
+
 # Activate the syntax highlighter
 activate :syntax
 ready do
@@ -55,4 +56,8 @@ set :port, 4567
 
 helpers do
   require './lib/toc_data.rb'
+
+  def api_endpoint
+    'https://dashboard.openguilds.com'
+  end
 end
