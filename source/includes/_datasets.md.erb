@@ -1,0 +1,81 @@
+# Datasets
+## The Dataset Object
+
+> The dataset object looks like this:
+
+```json
+<%= JSON.pretty_generate(dataset) %>
+```
+
+Datasets are created for a specific [guild](#the-guild-object).
+
+[Batches](#the-batch-object) can choose to store its finished data within a specific
+dataset.
+
+Datasets can be accessed for viewing through your guild.
+
+The object has the following attributes:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | The object's type. Objects of the same type have the same structure.
+id | string | The ID of the dataset being returned.
+data | object | The data objects associated with a given dataset.
+
+## List all Datasets
+
+```ruby
+require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
+
+OpenGuilds::Dataset.list()
+```
+
+```shell
+curl <%= api_endpoint + "/api/datasets" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+<%= JSON.pretty_generate(list_for([dataset], 'api/datasets')) %>
+```
+
+This will retrieve all private datasets for the authorized user.
+
+### HTTP Request
+
+`GET http://dashboard.openguilds.com/api/datasets`
+
+
+## Get a Specific Dataset
+
+```ruby
+require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
+
+OpenGuilds::Dataset.get(1)
+```
+
+```shell
+curl <%= api_endpoint + "/api/datasets/<ID>" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+<%= JSON.pretty_generate(dataset) %>
+```
+
+### HTTP Request
+
+`GET <%= api_endpoint + "/api/datasets/<ID>" %>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the dataset to retrieve
+
