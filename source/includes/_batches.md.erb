@@ -13,6 +13,9 @@ to a [guild](#the-guild-object).
 Batches can have many webhooks. Webhooks will send the
 data from a batch to its endpoint when the batch status changes to completed.
 
+Batches can also send their completed data to a given [dataset](#the-dataset-object).
+Datasets hold certain data which can be downloaded or explored as a group.
+
 Batches are funded by the guild before they are given to guild 
 [members](#the-member-object) to work on.
 
@@ -29,6 +32,7 @@ data_completed_count | integer | A count of all completed data in the batch.
 data_count | integer | A count of all data in the batch.
 data | object | The data objects associated with a given batch.
 webhooks | array[webhooks] | An array of webhook objects.
+dataset_destinations | array[datasets] | an array of dataset objects.
 status | string | A status describing the current state of the batch.
 
 The status of a batch object can be one of the following:
@@ -139,6 +143,11 @@ curl <%= api_endpoint + "/api/guild/<GUILD_ID>/batch" %>
         "destination": "https://your.service.com", 
         "secret": "secret123",
       },
+    ],
+    "dataset_destinations" [
+      {
+        "dataset_id": "1"
+      },
     ]
   }
 }
@@ -163,6 +172,7 @@ Parameter | Type | Description
 batch | object | The root key for the object, should contain "data" and "webhooks".
 data | array | An array of objects matching the guilds API.
 webhooks | array | An array of webhook objects with endpoints and secrets.
+dataset_destinations | array | An array of dataset destination objects with an ID of the dataset.
 
 
 ### URL Parameters

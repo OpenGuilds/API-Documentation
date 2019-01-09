@@ -5,12 +5,14 @@ require 'lib/batch.rb'
 require 'lib/guild.rb'
 require 'lib/member.rb'
 require 'lib/task.rb'
+require 'lib/dataset.rb'
 
 helpers WalletHelper
 helpers BatchHelper
 helpers GuildHelper
 helpers MemberHelper
 helpers TaskHelper
+helpers DatasetHelper
 
 # Markdown
 set :markdown_engine, :redcarpet
