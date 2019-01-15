@@ -1,7 +1,7 @@
 # Authentication
 
 
-> Authorize a client using your API Key:
+> Authorize a client using your Personal Access Key:
 
 ```ruby
 require 'open-guilds'
@@ -10,7 +10,7 @@ OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
 ```shell
 # With shell, you can just pass the correct header with each request
-curl <%= api_endpoint + "/api/users/authenticate" %>
+curl <%= api_endpoint + "/api/batches" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
 
 # If you need to authenticate via bearer auth 
@@ -21,28 +21,251 @@ curl <%= api_endpoint + "/api/users/authenticate" %>
 
 ```
 
-> Make sure to replace `8641fb38-294a-41d9-9591-3449dfd99910` with your API key.
+> Make sure to replace `8641fb38-294a-41d9-9591-3449dfd99910` with your token.
 
-OpenGuilds uses API keys to allow access to the API. 
-You can register a new OpenGuilds API key at our 
-[developer portal](https://dashboard.openguilds.com/account).
+OpenGuilds uses OAuth 2.0 to authenticate users.
+You can authenticate with the following OAuth flows:
 
-Authentication is done using an API secret key to be provided in each request. 
-Manage API keys from your dashboard. API keys allow access to all functions of 
+- [Authorization Code](#authorization-code-flow)
+- [Client Credentials](#client-credentials-flow)
+- [Password](#password-flow)
+
+You can also choose to use a [personal access token](#personal-access-tokens), 
+which you can manage from your 
+[account page](https://dashboard.openguilds.com/account). 
+Personal access tokens allow access to all functions of 
 your account and should be kept secret. Do not put keys on publicly accessible 
 Github repositories or in client-side code.
 
-Authentication is performed via HTTP Basic Auth. 
-Provide your API key as the basic auth username value. 
+If authentication is performed via HTTP Basic Auth
+provide your token as the basic auth username value.
 You do not need to provide a password.
 
 All API requests will be made over HTTPS. Calls over plain HTTP will fail. 
 API requests without authentication will also fail.
 
-OpenGuilds expects for the API key to be included in all API requests to 
-the server in a header that looks like the following:
-
-
 <aside class="notice">
 You must replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your personal API key.
 </aside>
+
+## Authorization Code Flow
+
+```ruby
+require 'open-guilds'
+token = OpenGuilds::OAuth::AuthorizationCode.request_token(
+  client_id: 'YOUR_CLIENT_ID',
+  client_secret: 'YOUR_CLIENT_SECRET',
+  code: 'RETURNED_CODE',
+  redirect_uri: 'urn:ietf:wg:oauth:2.0:oob'
+)
+
+# You can then override the default token with the one received:
+OpenGuilds::Batches.list(api_key: token)
+
+```
+
+```shell
+# We can use the code granted in the previous step like so:
+curl <%= api_endpoint + "/api/oauth/token" %>
+  -d client_id="YOUR_CLIENT_ID"
+  -d client_secret="YOUR_CLIENT_SECRET"
+  -d code="RETURNED_CODE"
+  -d grant_type="authorization_code"
+  -d redirect_uri="urn:ietf:wg:oauth:2.0:oob"
+```
+
+> Which should return your token:
+
+```json
+{
+  "access_token": "de6780bc506a0446309bd9362820ba8aed28aa506c71eedbe1c5c4f9dd350e54",
+  "token_type": "bearer", 
+  "expires_in": 7200,
+  "refresh_token": "8257e65c97202ed1726cf9571600918f3bffb2544b26e00a61df9897668c33a1"
+}
+```
+
+The authorization code flow is for exchanging an authorization code for an access token.
+It should be used to have users provide you with access to their accounts and your
+application is a web based app that can be redirected back to.
+
+### Getting an Authorization Code
+
+To request this code through the web app you can go to: 
+<%= link_to(
+  api_endpoint + '/oauth/authorize' + '?client_id=YOUR_CLIENT_ID&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code',
+  api_endpoint + '/oauth/authorize' + '?client_id=YOUR_CLIENT_ID&redirect_uri=urn:ietf:wg:oauth:2.0:oob&response_type=code'
+) %>
+
+The weird looking <code>urn:ietf:wg:oauth:2.0:oob</code> is there to tell the server
+that you want to be redirected directly to the code page, and not back to your application.
+If you have put in something else for your redirect path when registering your application, 
+make sure it matches with what you put in the above link.
+
+<aside class="notice">
+You must replace <code>YOUR_CLIENT_ID</code> with a registered OAuth application ID.
+</aside>
+
+
+### Exchanging the Code for a Token
+
+
+
+Once you have acquired the authorization code from above or from a client who has
+signed in through OAuth on your application, you can exchange it for an access token.
+
+You can view all of your access tokens from your [account page](https://dashboard.openguilds.com/account).
+
+### Access Token Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+access_token | string | The access token which can be used as your API key in requests.
+token_type | string | A description of the type of token.
+expires_in | integer | The number of seconds from its creation until the token expires.
+refresh_token | string | A code that can be used to refresh the token to extend its expiration date.
+
+## Client Credentials Flow
+
+```ruby
+require 'open-guilds'
+token = OpenGuilds::OAuth::ClientCredentials.request_token(
+  client_id: 'YOUR_CLIENT_ID',
+  client_secret: 'YOUR_CLIENT_SECRET'
+)
+
+# You can then override the default token with the one received:
+OpenGuilds::Batches.list(api_key: token)
+
+```
+
+```shell
+# We can use the code granted in the previous step like so:
+curl <%= api_endpoint + "/api/oauth/token" %>
+  -d client_id="YOUR_CLIENT_ID"
+  -d client_secret="YOUR_CLIENT_SECRET"
+  -d grant_type="client_credentials"
+```
+
+> Which should return your token:
+
+```json
+{
+  "access_token": "de6780bc506a0446309bd9362820ba8aed28aa506c71eedbe1c5c4f9dd350e54",
+  "token_type": "bearer", 
+  "expires_in": 7200,
+  "refresh_token": "8257e65c97202ed1726cf9571600918f3bffb2544b26e00a61df9897668c33a1"
+}
+```
+
+The client credentials flow is used for machine to machine authentication.
+It should be used when you want to authenticate your server to do something
+on your behalf.
+
+### Requesting an Access Token
+
+Credentials can be requested by passing in your client ID as well as your
+client secret. These are both generated when you create an OAuth application
+and can be found on your [account page](https://dashboard.openguilds.com/account). 
+
+### Access Token Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+access_token | string | The access token which can be used as your API key in requests.
+token_type | string | A description of the type of token.
+expires_in | integer | The number of seconds from its creation until the token expires.
+refresh_token | string | A code that can be used to refresh the token to extend its expiration date.
+
+
+## Password Flow
+
+```ruby
+require 'open-guilds'
+token = OpenGuilds::OAuth::Password.request_token(
+  client_id: 'YOUR_CLIENT_ID',
+  client_secret: 'YOUR_CLIENT_SECRET',
+  username: 'YOUR_USERNAME',
+  password: 'YOUR_PASSWORD'
+)
+
+# You can then override the default token with the one received:
+OpenGuilds::Batches.list(api_key: token)
+
+```
+
+```shell
+# We can use the code granted in the previous step like so:
+curl <%= api_endpoint + "/api/oauth/token" %>
+  -d client_id="YOUR_CLIENT_ID"
+  -d client_secret="YOUR_CLIENT_SECRET"
+  -d username="YOUR_USERNAME"
+  -d password="YOUR_PASSWORD"
+  -d grant_type="password"
+```
+
+> Which should return your token:
+
+```json
+{
+  "access_token": "de6780bc506a0446309bd9362820ba8aed28aa506c71eedbe1c5c4f9dd350e54",
+  "token_type": "bearer", 
+  "expires_in": 7200,
+  "refresh_token": "8257e65c97202ed1726cf9571600918f3bffb2544b26e00a61df9897668c33a1"
+}
+```
+
+The password flow is used when your application is not web based,
+but the owner of the application is also not the owner of the resource you want
+to access. In this case you can provide a username and password of the user
+who owns the resource.
+
+### Requesting an Access Token
+
+Credentials can be requested by passing in your client ID, client secret as 
+well as a username and password of the user who owns the resources. 
+Your client ID and secret are both generated when you create an OAuth application
+and can be found on your [account page](https://dashboard.openguilds.com/account). 
+
+### Access Token Parameters
+
+Parameter | Type | Description
+--------- | ---- | -----------
+access_token | string | The access token which can be used as your API key in requests.
+token_type | string | A description of the type of token.
+expires_in | integer | The number of seconds from its creation until the token expires.
+refresh_token | string | A code that can be used to refresh the token to extend its expiration date.
+
+## Personal Access Tokens
+
+> Simply set your API key default to your personal access key:
+
+```ruby
+require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
+```
+
+```shell
+# With shell, you can just pass the correct header with each request
+curl <%= api_endpoint + "/api/batches" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+
+# If you need to authenticate via bearer auth 
+# (e.g., for a cross-origin request), use:
+
+-H "Authorization: Bearer 8641fb38-294a-41d9-9591-3449dfd99910"
+# instead of -u 8641fb38-294a-41d9-9591-3449dfd99910.
+
+```
+
+> Make sure to replace `8641fb38-294a-41d9-9591-3449dfd99910` with your token.
+
+Personal Access tokens are created by you and act as more permanent API keys.
+They should be used in scripts or applications where you will only be using
+resources from your own account, and do not need to go through creating an
+OAuth application.
+
+### Creating a Personal Access Token
+
+You can easily create a personal access token by visiting your
+[account page](https://dashboard.openguilds.com/account).
