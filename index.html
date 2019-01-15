@@ -226,6 +226,20 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authorization-code-flow" class="toc-h2 toc-link" data-title="Authorization Code Flow">Authorization Code Flow</a>
+                  </li>
+                  <li>
+                    <a href="#client-credentials-flow" class="toc-h2 toc-link" data-title="Client Credentials Flow">Client Credentials Flow</a>
+                  </li>
+                  <li>
+                    <a href="#password-flow" class="toc-h2 toc-link" data-title="Password Flow">Password Flow</a>
+                  </li>
+                  <li>
+                    <a href="#personal-access-tokens" class="toc-h2 toc-link" data-title="Personal Access Tokens">Personal Access Tokens</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
@@ -388,12 +402,12 @@ party services such as Amazon Mechanical Turk (it will use the workersandbox).</
 </blockquote>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p>Authorize a client using your API Key:</p>
+<p>Authorize a client using your Personal Access Key:</p>
 </blockquote>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
 <span class="no">OpenGuilds</span><span class="p">.</span><span class="nf">api_key</span> <span class="o">=</span> <span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span>
 </code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl https://dashboard.openguilds.com/api/users/authenticate
+curl https://dashboard.openguilds.com/api/batches
   -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
 
 <span class="c"># If you need to authenticate via bearer auth </span>
@@ -404,31 +418,269 @@ curl https://dashboard.openguilds.com/api/users/authenticate
 
 </code></pre>
 <blockquote>
-<p>Make sure to replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your API key.</p>
+<p>Make sure to replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your token.</p>
 </blockquote>
 
-<p>OpenGuilds uses API keys to allow access to the API. 
-You can register a new OpenGuilds API key at our 
-<a href="https://dashboard.openguilds.com/account">developer portal</a>.</p>
+<p>OpenGuilds uses OAuth 2.0 to authenticate users.
+You can authenticate with the following OAuth flows:</p>
 
-<p>Authentication is done using an API secret key to be provided in each request. 
-Manage API keys from your dashboard. API keys allow access to all functions of 
+<ul>
+<li><a href="#authorization-code-flow">Authorization Code</a></li>
+<li><a href="#client-credentials-flow">Client Credentials</a></li>
+<li><a href="#password-flow">Password</a></li>
+</ul>
+
+<p>You can also choose to use a <a href="#personal-access-tokens">personal access token</a>, 
+which you can manage from your 
+<a href="https://dashboard.openguilds.com/account">account page</a>. 
+Personal access tokens allow access to all functions of 
 your account and should be kept secret. Do not put keys on publicly accessible 
 Github repositories or in client-side code.</p>
 
-<p>Authentication is performed via HTTP Basic Auth. 
-Provide your API key as the basic auth username value. 
+<p>If authentication is performed via HTTP Basic Auth
+provide your token as the basic auth username value.
 You do not need to provide a password.</p>
 
 <p>All API requests will be made over HTTPS. Calls over plain HTTP will fail. 
 API requests without authentication will also fail.</p>
 
-<p>OpenGuilds expects for the API key to be included in all API requests to 
-the server in a header that looks like the following:</p>
-
 <aside class="notice">
 You must replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your personal API key.
 </aside>
+<h2 id='authorization-code-flow'>Authorization Code Flow</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+<span class="n">token</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">OAuth</span><span class="o">::</span><span class="no">AuthorizationCode</span><span class="p">.</span><span class="nf">request_token</span><span class="p">(</span>
+  <span class="ss">client_id: </span><span class="s1">'YOUR_CLIENT_ID'</span><span class="p">,</span>
+  <span class="ss">client_secret: </span><span class="s1">'YOUR_CLIENT_SECRET'</span><span class="p">,</span>
+  <span class="ss">code: </span><span class="s1">'RETURNED_CODE'</span><span class="p">,</span>
+  <span class="ss">redirect_uri: </span><span class="s1">'urn:ietf:wg:oauth:2.0:oob'</span>
+<span class="p">)</span>
+
+<span class="c1"># You can then override the default token with the one received:</span>
+<span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Batches</span><span class="p">.</span><span class="nf">list</span><span class="p">(</span><span class="ss">api_key: </span><span class="n">token</span><span class="p">)</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># We can use the code granted in the previous step like so:</span>
+curl https://dashboard.openguilds.com/api/oauth/token
+  -d <span class="nv">client_id</span><span class="o">=</span><span class="s2">"YOUR_CLIENT_ID"</span>
+  -d <span class="nv">client_secret</span><span class="o">=</span><span class="s2">"YOUR_CLIENT_SECRET"</span>
+  -d <span class="nv">code</span><span class="o">=</span><span class="s2">"RETURNED_CODE"</span>
+  -d <span class="nv">grant_type</span><span class="o">=</span><span class="s2">"authorization_code"</span>
+  -d <span class="nv">redirect_uri</span><span class="o">=</span><span class="s2">"urn:ietf:wg:oauth:2.0:oob"</span>
+</code></pre>
+<blockquote>
+<p>Which should return your token:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de6780bc506a0446309bd9362820ba8aed28aa506c71eedbe1c5c4f9dd350e54"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8257e65c97202ed1726cf9571600918f3bffb2544b26e00a61df9897668c33a1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The authorization code flow is for exchanging an authorization code for an access token.
+It should be used to have users provide you with access to their accounts and your
+application is a web based app that can be redirected back to.</p>
+<h3 id='getting-an-authorization-code'>Getting an Authorization Code</h3>
+<p>To request this code through the web app you can go to: 
+<a href="https://dashboard.openguilds.com/oauth/authorize?client_id=YOUR_CLIENT_ID&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=code">https://dashboard.openguilds.com/oauth/authorize?client_id=YOUR_CLIENT_ID&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=code</a></p>
+
+<p>The weird looking <code>urn:ietf:wg:oauth:2.0:oob</code> is there to tell the server
+that you want to be redirected directly to the code page, and not back to your application.
+If you have put in something else for your redirect path when registering your application, 
+make sure it matches with what you put in the above link.</p>
+
+<aside class="notice">
+You must replace <code>YOUR_CLIENT_ID</code> with a registered OAuth application ID.
+</aside>
+<h3 id='exchanging-the-code-for-a-token'>Exchanging the Code for a Token</h3>
+<p>Once you have acquired the authorization code from above or from a client who has
+signed in through OAuth on your application, you can exchange it for an access token.</p>
+
+<p>You can view all of your access tokens from your <a href="https://dashboard.openguilds.com/account">account page</a>.</p>
+<h3 id='access-token-parameters'>Access Token Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>string</td>
+<td>The access token which can be used as your API key in requests.</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>string</td>
+<td>A description of the type of token.</td>
+</tr>
+<tr>
+<td>expires_in</td>
+<td>integer</td>
+<td>The number of seconds from its creation until the token expires.</td>
+</tr>
+<tr>
+<td>refresh_token</td>
+<td>string</td>
+<td>A code that can be used to refresh the token to extend its expiration date.</td>
+</tr>
+</tbody></table>
+<h2 id='client-credentials-flow'>Client Credentials Flow</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+<span class="n">token</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">OAuth</span><span class="o">::</span><span class="no">ClientCredentials</span><span class="p">.</span><span class="nf">request_token</span><span class="p">(</span>
+  <span class="ss">client_id: </span><span class="s1">'YOUR_CLIENT_ID'</span><span class="p">,</span>
+  <span class="ss">client_secret: </span><span class="s1">'YOUR_CLIENT_SECRET'</span>
+<span class="p">)</span>
+
+<span class="c1"># You can then override the default token with the one received:</span>
+<span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Batches</span><span class="p">.</span><span class="nf">list</span><span class="p">(</span><span class="ss">api_key: </span><span class="n">token</span><span class="p">)</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># We can use the code granted in the previous step like so:</span>
+curl https://dashboard.openguilds.com/api/oauth/token
+  -d <span class="nv">client_id</span><span class="o">=</span><span class="s2">"YOUR_CLIENT_ID"</span>
+  -d <span class="nv">client_secret</span><span class="o">=</span><span class="s2">"YOUR_CLIENT_SECRET"</span>
+  -d <span class="nv">grant_type</span><span class="o">=</span><span class="s2">"client_credentials"</span>
+</code></pre>
+<blockquote>
+<p>Which should return your token:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de6780bc506a0446309bd9362820ba8aed28aa506c71eedbe1c5c4f9dd350e54"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8257e65c97202ed1726cf9571600918f3bffb2544b26e00a61df9897668c33a1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The client credentials flow is used for machine to machine authentication.
+It should be used when you want to authenticate your server to do something
+on your behalf.</p>
+<h3 id='requesting-an-access-token'>Requesting an Access Token</h3>
+<p>Credentials can be requested by passing in your client ID as well as your
+client secret. These are both generated when you create an OAuth application
+and can be found on your <a href="https://dashboard.openguilds.com/account">account page</a>. </p>
+<h3 id='access-token-parameters-2'>Access Token Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>string</td>
+<td>The access token which can be used as your API key in requests.</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>string</td>
+<td>A description of the type of token.</td>
+</tr>
+<tr>
+<td>expires_in</td>
+<td>integer</td>
+<td>The number of seconds from its creation until the token expires.</td>
+</tr>
+<tr>
+<td>refresh_token</td>
+<td>string</td>
+<td>A code that can be used to refresh the token to extend its expiration date.</td>
+</tr>
+</tbody></table>
+<h2 id='password-flow'>Password Flow</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+<span class="n">token</span> <span class="o">=</span> <span class="no">OpenGuilds</span><span class="o">::</span><span class="no">OAuth</span><span class="o">::</span><span class="no">Password</span><span class="p">.</span><span class="nf">request_token</span><span class="p">(</span>
+  <span class="ss">client_id: </span><span class="s1">'YOUR_CLIENT_ID'</span><span class="p">,</span>
+  <span class="ss">client_secret: </span><span class="s1">'YOUR_CLIENT_SECRET'</span><span class="p">,</span>
+  <span class="ss">username: </span><span class="s1">'YOUR_USERNAME'</span><span class="p">,</span>
+  <span class="ss">password: </span><span class="s1">'YOUR_PASSWORD'</span>
+<span class="p">)</span>
+
+<span class="c1"># You can then override the default token with the one received:</span>
+<span class="no">OpenGuilds</span><span class="o">::</span><span class="no">Batches</span><span class="p">.</span><span class="nf">list</span><span class="p">(</span><span class="ss">api_key: </span><span class="n">token</span><span class="p">)</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># We can use the code granted in the previous step like so:</span>
+curl https://dashboard.openguilds.com/api/oauth/token
+  -d <span class="nv">client_id</span><span class="o">=</span><span class="s2">"YOUR_CLIENT_ID"</span>
+  -d <span class="nv">client_secret</span><span class="o">=</span><span class="s2">"YOUR_CLIENT_SECRET"</span>
+  -d <span class="nv">username</span><span class="o">=</span><span class="s2">"YOUR_USERNAME"</span>
+  -d <span class="nv">password</span><span class="o">=</span><span class="s2">"YOUR_PASSWORD"</span>
+  -d <span class="nv">grant_type</span><span class="o">=</span><span class="s2">"password"</span>
+</code></pre>
+<blockquote>
+<p>Which should return your token:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"de6780bc506a0446309bd9362820ba8aed28aa506c71eedbe1c5c4f9dd350e54"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bearer"</span><span class="p">,</span><span class="w"> 
+  </span><span class="s2">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">7200</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"refresh_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8257e65c97202ed1726cf9571600918f3bffb2544b26e00a61df9897668c33a1"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The password flow is used when your application is not web based,
+but the owner of the application is also not the owner of the resource you want
+to access. In this case you can provide a username and password of the user
+who owns the resource.</p>
+<h3 id='requesting-an-access-token-2'>Requesting an Access Token</h3>
+<p>Credentials can be requested by passing in your client ID, client secret as 
+well as a username and password of the user who owns the resources. 
+Your client ID and secret are both generated when you create an OAuth application
+and can be found on your <a href="https://dashboard.openguilds.com/account">account page</a>. </p>
+<h3 id='access-token-parameters-3'>Access Token Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>string</td>
+<td>The access token which can be used as your API key in requests.</td>
+</tr>
+<tr>
+<td>token_type</td>
+<td>string</td>
+<td>A description of the type of token.</td>
+</tr>
+<tr>
+<td>expires_in</td>
+<td>integer</td>
+<td>The number of seconds from its creation until the token expires.</td>
+</tr>
+<tr>
+<td>refresh_token</td>
+<td>string</td>
+<td>A code that can be used to refresh the token to extend its expiration date.</td>
+</tr>
+</tbody></table>
+<h2 id='personal-access-tokens'>Personal Access Tokens</h2>
+<blockquote>
+<p>Simply set your API key default to your personal access key:</p>
+</blockquote>
+<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'open-guilds'</span>
+<span class="no">OpenGuilds</span><span class="p">.</span><span class="nf">api_key</span> <span class="o">=</span> <span class="s1">'8641fb38-294a-41d9-9591-3449dfd99910'</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+curl https://dashboard.openguilds.com/api/batches
+  -u <span class="s2">"8641fb38-294a-41d9-9591-3449dfd99910"</span>
+
+<span class="c"># If you need to authenticate via bearer auth </span>
+<span class="c"># (e.g., for a cross-origin request), use:</span>
+
+-H <span class="s2">"Authorization: Bearer 8641fb38-294a-41d9-9591-3449dfd99910"</span>
+<span class="c"># instead of -u 8641fb38-294a-41d9-9591-3449dfd99910.</span>
+
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>8641fb38-294a-41d9-9591-3449dfd99910</code> with your token.</p>
+</blockquote>
+
+<p>Personal Access tokens are created by you and act as more permanent API keys.
+They should be used in scripts or applications where you will only be using
+resources from your own account, and do not need to go through creating an
+OAuth application.</p>
+<h3 id='creating-a-personal-access-token'>Creating a Personal Access Token</h3>
+<p>You can easily create a personal access token by visiting your
+<a href="https://dashboard.openguilds.com/account">account page</a>.</p>
 <h1 id='errors'>Errors</h1>
 <p>The OpenGuilds API uses the following error codes:</p>
 
