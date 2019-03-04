@@ -1,0 +1,89 @@
+# Streams
+
+## The Stream Object
+> The stream object looks like this:
+
+```json
+<%= JSON.pretty_generate(stream) %>
+```
+
+[Guilds](#the-guild-object) can have a series of tasks they perform on each piece of data.
+These groups of tasks are called streams.
+
+Data is passed to each connection in a stream. When a task is finished it will
+send the datum to all outgoing connections. A datum is considered done when
+it has no more outgoing connections.
+
+
+The Connection object has the following attributes:
+
+Attribute | Type | Description
+--------- | ---- | -----------
+object | string | The object being described by the incoming data, in this case a Connection
+source | string | The ID of the task used as the source of the data transfer.
+source_type | string | Either a Task or a Stream, if it is a Stream it means it is a entry connection. New data is first put in these connections.
+target | string | The ID of the task used as the destination of the data transfer.
+target_type | string | Always a Task, data is complete when there are no next tasks.
+
+An inbound connection has the task object ID match the target ID, and an outbound
+connection has the task ID match the source ID.
+
+## List all Streams
+```ruby
+require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
+
+#The guild ID is passed in as the first argument
+OpenGuilds::Stream.list(1)
+```
+
+```shell
+curl <%= api_endpoint + "/api/guilds/<GUILD_ID>/streams" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+<%= JSON.pretty_generate(list_for([stream], '/api/guilds/<GUILD_ID>/streams')) %>
+```
+
+### HTTP Request
+
+`GET <%= api_endpoint + "/api/guilds/<GUILD_ID>/streams" %>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+GUILD_ID | The ID of the guild you want to view the streams of
+
+
+## Get a Stream
+```ruby
+require 'open-guilds'
+OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
+
+OpenGuilds::Stream.get(1)
+```
+
+```shell
+curl <%= api_endpoint + "/api/streams/<ID>" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+<%= JSON.pretty_generate(stream) %>
+```
+
+### HTTP Request
+
+`GET <%= api_endpoint + "/api/streams/<ID>" %>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the stream

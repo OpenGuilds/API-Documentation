@@ -7,18 +7,15 @@
 <%= JSON.pretty_generate(task) %>
 ```
 
-[Guilds](#the-guild-object) have a series of tasks they perform on each piece of data.
+[Guilds](#the-guild-object) have tasks they can perform on each piece of data.
 
-[Members](#the-member-object) subscribe to tasks to receive the tasks work.
+[Members](#the-member-object) subscribe to tasks to receive notifications of new task work.
 
 To subscribe to a task, [members](#the-member-object) must have all the required 
 qualifications, which can be created by going to the task page.
 
 [Members](#the-member-object) perform work on data by transforming it through a
 [workspace](#the-workspace-object).
-
-Tasks are bound together through connections which are created on your
-[guild](#the-guild-object) page.
 
 
 The object has the following attributes:
@@ -32,17 +29,6 @@ minimum_amount_cents | integer | The minimum cost of a datum being processed thr
 workspace | object | The connected workspace object for this task.
 connections | object | A list of associated connection objects.
 
-
-The Connection object has the following attributes:
-
-Attribute | Type | Description
---------- | ---- | -----------
-object | string | The object being described by the incoming data, in this case a Connection
-source | string | The ID of the task used as the source of the data transfer.
-target | string | The ID of the task used as the destination of the data transfer.
-
-An inbound connection has the task object ID match the target ID, and an outbound
-connection has the task ID match the source ID.
 
 
 ## List all Tasks
