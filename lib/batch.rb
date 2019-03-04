@@ -3,6 +3,7 @@ module BatchHelper
     {
       object: "Batch",
       id: "1",
+      processable: task,
       data_completed_count: "0",
       data_count: "1",
       data: list_for([datum(1), datum(2), datum(3)], 'api/batch/1/data'),

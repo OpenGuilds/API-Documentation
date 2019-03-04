@@ -6,6 +6,7 @@ require 'lib/guild.rb'
 require 'lib/member.rb'
 require 'lib/task.rb'
 require 'lib/dataset.rb'
+require 'lib/stream.rb'
 
 helpers WalletHelper
 helpers BatchHelper
@@ -13,6 +14,7 @@ helpers GuildHelper
 helpers MemberHelper
 helpers TaskHelper
 helpers DatasetHelper
+helpers StreamHelper
 
 # Markdown
 set :markdown_engine, :redcarpet

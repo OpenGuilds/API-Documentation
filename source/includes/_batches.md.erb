@@ -7,8 +7,8 @@
 <%= JSON.pretty_generate(batch) %>
 ```
 
-Batches are created when you send [data](#the-datum-object)
-to a [guild](#the-guild-object).
+Batches are created to group [data](#the-datum-object) you send to either a
+[task](#the-task-object) or a [stream](#the-stream-object) of tasks.
 
 Batches can have many webhooks. Webhooks will send the
 data from a batch to its endpoint when the batch status changes to completed.
@@ -21,6 +21,10 @@ Batches are funded by the guild before they are given to guild
 
 Batches are accounted for by a guild's [bank](#the-bank-object)
 
+If a batch is given to a task then it will be completed when that task is completed.
+
+If a batch is given to a stream then it will be completed after all tasks without
+outgoing connections have been completed.
 
 The object has the following attributes:
 
@@ -28,6 +32,7 @@ Attribute | Type | Description
 --------- | ---- | -----------
 object | string | The object's type. Objects of the same type have the same structure.
 id | string | The ID of the batch being returned.
+processable | object | The processable object. Either a [task](#the-task-object) or a [stream](#the-stream-object).
 data_completed_count | integer | A count of all completed data in the batch.
 data_count | integer | A count of all data in the batch.
 data | object | The data objects associated with a given batch.
@@ -106,20 +111,35 @@ when delivering the batch payload to its destination.
 Creating a batch is as simple as specifying the data you want to use for the
 initial task as well as the destinations for the data when it is completed.
 
+You can create this batch under a task or stream resource.
+
 ```ruby
 require 'open-guilds'
 OpenGuilds.api_key = '8641fb38-294a-41d9-9591-3449dfd99910'
 
 file = File.read('path/to/data.json')
 
-OpenGuilds::Batch.create(
-  guild: 1,
+OpenGuilds::Task.get(1).create_batch(
   params: JSON.parse(file)
 )
+
+# Or for a stream:
+
+OpenGuilds::Stream.get(1).create_batch(
+  params: JSON.parse(file)
+)
+
 ```
 
 ```shell
-curl <%= api_endpoint + "/api/guild/<GUILD_ID>/batch" %>
+curl <%= api_endpoint + "/api/tasks/<TASK_ID>/batches" %>
+  -u "8641fb38-294a-41d9-9591-3449dfd99910"
+  -H "Content-Type: application/json" 
+  -d "@data.json"
+
+# Or for a stream:
+
+curl <%= api_endpoint + "/api/streams/<STREAM_ID>/batches" %>
   -u "8641fb38-294a-41d9-9591-3449dfd99910"
   -H "Content-Type: application/json" 
   -d "@data.json"

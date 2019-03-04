@@ -10,7 +10,7 @@
 [Guilds](#the-guild-object) can have a series of tasks they perform on each piece of data.
 These groups of tasks are called streams.
 
-Data is passed to each connection in a stream. When a task is finished it will
+[Data](#the-datum-object) is passed to each connection in a stream. When a task is finished it will
 send the datum to all outgoing connections. A datum is considered done when
 it has no more outgoing connections.
 
@@ -45,7 +45,7 @@ curl <%= api_endpoint + "/api/guilds/<GUILD_ID>/streams" %>
 > The above command returns JSON structured like this:
 
 ```json
-<%= JSON.pretty_generate(list_for([stream], '/api/guilds/<GUILD_ID>/streams')) %>
+<%= JSON.pretty_generate(list_for([stream], '/api/guilds/1/streams')) %>
 ```
 
 ### HTTP Request
